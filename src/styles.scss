@@ -11,6 +11,10 @@
     --mat-blue:rgb(66, 122, 174);
     --purple:rgb(123, 25, 123);
 
+    // darkmode
+        --bgc: white;
+    --textColor:black;
+
     //border
     --border: 1px solid lightgray;
 
@@ -20,6 +24,13 @@
     //margin
     --margin-xl: 2rem;
 }
+
+[data-theme="dark"]{
+    --bgc:rgb(38, 38, 38);
+    --textColor:white;
+}
+
+
 
 html,body {
     width: 100vw;
