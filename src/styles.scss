@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    //color
+    --darkblue:rgb(19, 19, 29);
+    --light-orange:rgb(255, 105, 51);
+    --mat-blue:rgb(66, 122, 174);
+    --purple:rgb(123, 25, 123);
+
+    //border
+    --border: 1px solid lightgray;
+
+    //border-radius
+    --border-radius: .3rem;
+
+    //margin
+    --margin-xl: 2rem;
+}
+
+html,body {
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
