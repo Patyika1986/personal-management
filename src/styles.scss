@@ -10,9 +10,11 @@
     --light-orange:rgb(255, 105, 51);
     --mat-blue:rgb(66, 122, 174);
     --purple:rgb(123, 25, 123);
+    --light-gray:rgb(233, 233, 233);
+    --links-color:rgb(216, 244, 255);
 
     // darkmode
-        --bgc: white;
+        --bgc: rgb(238, 229, 229);
     --textColor:black;
 
     //border
@@ -36,5 +38,11 @@ html,body {
     width: 100vw;
     height: 100vh;
     font-family: sans-serif;
+}
+
+.active {
+    color: blue;
+    font-weight: 800;
+    box-shadow: 0px 0px 10px skyblue;
 }
 

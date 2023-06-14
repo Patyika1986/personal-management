@@ -1,0 +1,34 @@
+.cont {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bgc);
+    color: var(--textColor);
+  
+    .boxes{
+      width: 95%;
+      height: 100%;
+      padding-left: 8rem;
+      padding-top: 2rem;
+
+      .material-symbols-outlined{
+        font-size: 30px;
+        margin-bottom: 1.3rem;
+        cursor: pointer;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+
+      @media(max-width: 686px){
+        margin-left: -3rem;
+      }
+
+      .table{
+
+      }
+
+      _border: 1px solid black;
+    }
+  
+  }

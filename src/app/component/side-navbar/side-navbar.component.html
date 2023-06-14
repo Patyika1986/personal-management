@@ -1,0 +1,55 @@
+<div id="aside" class="aside">
+  <div class="links">
+    <span
+      class="material-symbols-outlined"
+      title="Menü"
+      (click)="expandAside()"
+    >
+      menu
+    </span>
+  </div>
+  <div class="links" routerLink="/dashboard-overview" routerLinkActive="active">
+    <span class="material-symbols-outlined" title="Dashboard"> dashboard </span>
+    <span class="link-text">Dashboard</span>
+  </div>
+  <div class="links" routerLink="/personal-overview" routerLinkActive="active">
+    <span class="material-symbols-outlined" title="Personal Overview">
+      person
+    </span>
+    <span class="link-text">Personal</span>
+  </div>
+  <div class="links">
+    <span class="material-symbols-outlined" title="Time Overview">
+      schedule
+    </span>
+    <span class="link-text">Time</span>
+  </div>
+  <div class="links">
+    <span class="material-symbols-outlined" title="Settings"> settings </span>
+    <span class="link-text">Settings</span>
+  </div>
+  <div class="links">
+    <span
+      class="material-symbols-outlined"
+      title="Dark and Light Mode"
+      (click)="toggleTheme()"
+    >
+      contrast
+    </span>
+    <span class="link-text">Darkmode</span>
+  </div>
+  <div class="links">
+    <span class="material-symbols-outlined" title="Software Info">
+      question_mark
+    </span>
+    <span class="link-text">Software Info</span>
+  </div>
+  <div class="links">
+    <span class="material-symbols-outlined" title="Log in"> login </span>
+    <span class="link-text">Log in</span>
+  </div>
+  <div class="links-end">
+    <span class="material-symbols-outlined" title="Logout"> logout </span>
+    <span class="link-text">Logout</span>
+  </div>
+</div>
