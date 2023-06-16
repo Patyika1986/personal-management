@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CountryCityService } from 'src/app/service/country-city.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class AddNewEmployeesComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
-    private personalService: PersonalService){}
+    private personalService: PersonalService,
+    private countryCityServices: CountryCityService){}
 
   public red:string = 'red';
   public form = this.formBuilder.group({
@@ -23,18 +25,27 @@ export class AddNewEmployeesComponent implements OnInit{
     email:['',Validators.compose([Validators.minLength(6),Validators.maxLength(35),Validators.email,Validators.required])],
     phone:['',Validators.compose([Validators.required,Validators.minLength(6),Validators.maxLength(30)])],
     gender:['',Validators.compose([Validators.required])],
-    img:['',Validators.compose([Validators.required])]
+    img:['',Validators.compose([Validators.required])],
+    placeOfBirth:['']
   });
+
+
   public imageUrl:string = "./assets/lakatosquadrat.jpg";
+
   public genders = [
     "Male",
     "Female",
     "Other"
-  ]
+  ];
+
+  public countrys: any;
+
+
 
 
   ngOnInit(): void {
-    
+    this.countrys = this.countryCityServices.getCountry();
+      
   }
 
   onSelectImageFile(file:any){
@@ -49,12 +60,13 @@ export class AddNewEmployeesComponent implements OnInit{
   }
 
   selectGender(gender:any){
-
-    console.log(gender.value,'gender');
     this.form.value.gender = gender.value;
-    console.log(this.form.value);
-    
-    
+  }
+
+
+
+  selectCountry(country:any){
+    console.log(country.value,'country');
   }
 
 
@@ -63,6 +75,7 @@ export class AddNewEmployeesComponent implements OnInit{
 
   addEmployee(){
     console.log(this.form.value);
+    
   }
 
 

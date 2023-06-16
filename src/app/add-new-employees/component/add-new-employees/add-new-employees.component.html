@@ -53,12 +53,14 @@
           </div>
           <div class="col">
             <label class="form-label">Place of birth</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>-- Place of birth --</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            <input
+              type="text"
+              class="form-control"
+              id="placeOfBirth"
+              name="placeOfBirth"
+              placeholder="Place of birth"
+              formControlName="placeOfBirth"
+            />
           </div>
           <div class="col">
             <label class="form-label">Gender</label>
@@ -126,11 +128,15 @@
           <div class="col">
             <label class="form-label">Country</label>
 
-            <select class="form-select" aria-label="Default select example">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="selectCountry($event.target)"
+            >
               <option>--select your country--</option>
-              <option>One</option>
-              <option>Two</option>
-              <option>Three</option>
+              <option *ngFor="let country of countrys">
+                {{ country.name }}
+              </option>
             </select>
           </div>
         </div>
