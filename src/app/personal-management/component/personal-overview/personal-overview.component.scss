@@ -1,34 +1,41 @@
 .cont {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bgc);
-    color: var(--textColor);
-  
-    .boxes{
-      width: 95%;
-      height: 100%;
-      padding-left: 8rem;
-      padding-top: 2rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bgc);
+  color: var(--textColor);
 
-      .material-symbols-outlined{
-        font-size: 30px;
-        margin-bottom: 1.3rem;
-        cursor: pointer;
+  .boxes {
+    width: 95%;
+    height: 100%;
+    padding-left: 8rem;
+    padding-top: 2rem;
 
-        &:hover{
-          text-decoration: underline;
-        }
+    .material-symbols-outlined {
+      font-size: 30px;
+      margin-bottom: 1.3rem;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
       }
-
-      @media(max-width: 686px){
-        margin-left: -3rem;
-      }
-
-      .table{
-
-      }
-
-      _border: 1px solid black;
     }
-  
+
+    @media (max-width: 686px) {
+      margin-left: -3rem;
+    }
+
+    .table {
+      .material-symbols-outlined {
+        font-size: 25px;
+      }
+      .edit {
+        color: orange;
+      }
+      .delete {
+        color: var(--orange-red);
+      }
+    }
+
+    _border: 1px solid black;
   }
+}

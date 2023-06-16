@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardOverviewComponent } from './dashboard-overview/component/dashboard-overview/dashboard-overview.component';
 import { PersonalOverviewComponent } from './personal-management/component/personal-overview/personal-overview.component';
+import { AddPersonalComponent } from './personal-management/component/add-personal/add-personal.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'personal-module', loadChildren: () => import('./service/personal/personal.module').then(personal => personal.PersonalModule)},
   { path: 'dashboard-overview', component: DashboardOverviewComponent },
   { path: 'personal-overview', component: PersonalOverviewComponent },
+  { path: 'add-personal', component: AddPersonalComponent },
   { path: '', redirectTo: 'dashboard-overview', pathMatch: 'full' }
 ];
 

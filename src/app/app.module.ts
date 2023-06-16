@@ -8,6 +8,9 @@ import { PersonalOverviewComponent } from './personal-management/component/perso
 import { SideNavbarComponent } from './component/side-navbar/side-navbar.component';
 import { CardsComponent } from './dashboard-overview/component/cards/cards.component';
 import { BadgeComponent } from './component/badge/badge.component';
+import { AddPersonalComponent } from './personal-management/component/add-personal/add-personal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,11 +20,15 @@ import { BadgeComponent } from './component/badge/badge.component';
     PersonalOverviewComponent,
     SideNavbarComponent,
     CardsComponent,
-    BadgeComponent
+    BadgeComponent,
+    AddPersonalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
