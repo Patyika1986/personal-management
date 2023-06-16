@@ -11,6 +11,9 @@ import { BadgeComponent } from './component/badge/badge.component';
 import { AddPersonalComponent } from './personal-management/component/add-personal/add-personal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddNewEmployeesComponent } from './add-new-employees/component/add-new-employees/add-new-employees.component';
+import { AddButtonComponent } from './component/add-button/add-button.component';
+import { ResetButtonComponent } from './component/reset-button/reset-button.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     SideNavbarComponent,
     CardsComponent,
     BadgeComponent,
-    AddPersonalComponent
+    AddPersonalComponent,
+    AddNewEmployeesComponent,
+    AddButtonComponent,
+    ResetButtonComponent
   ],
   imports: [
     BrowserModule,

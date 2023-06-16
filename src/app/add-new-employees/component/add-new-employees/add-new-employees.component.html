@@ -1,0 +1,193 @@
+<app-side-navbar></app-side-navbar>
+<div class="cont">
+  <div class="container">
+    <div class="form-box">
+      <form [formGroup]="form" (ngSubmit)="addEmployee()">
+        <div class="row">
+          <div class="col">
+            <h1>Add New Employees</h1>
+          </div>
+          <div class="col">
+            <div class="image-box">
+              <img [src]="imageUrl" alt="Your Profile image" id="img" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 mb-4">
+          <div class="col">
+            <label for="firsName" class="form-label">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firsName"
+              name="firstName"
+              placeholder="Firstname"
+              formControlName="firsName"
+            />
+          </div>
+          <div class="col">
+            <label for="lastName" class="form-label">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Lastname"
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col">
+            <label for="dateOfBirth" class="form-label">Date of birth</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              placeholder="Date of birth"
+              formControlName="dateOfBirth"
+            />
+          </div>
+          <div class="col">
+            <label class="form-label">Place of birth</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>-- Place of birth --</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col">
+            <label class="form-label">Gender</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="selectGender($event.target)"
+            >
+              <option selected>-- Gender --</option>
+              <option *ngFor="let gender of genders">
+                {{ gender }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col">
+            <label for="street" class="form-label">Street</label>
+            <input
+              type="text"
+              class="form-control"
+              id="street"
+              name="street"
+              placeholder="Street"
+              formControlName="street"
+            />
+          </div>
+          <div class="col">
+            <label for="housNr" class="form-label">Hous nr</label>
+            <input
+              type="number"
+              class="form-control"
+              id="housNr"
+              name="housNr"
+              placeholder="Hous nr"
+              formControlName="housNr"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col">
+            <label for="zipCode" class="form-label">Zip Code</label>
+            <input
+              type="number"
+              class="form-control"
+              id="zipCode"
+              name="zipCode"
+              placeholder="Zip Code"
+              formControlName="zipCode"
+            />
+          </div>
+          <div class="col">
+            <label for="city" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              placeholder="City"
+              formControlName="city"
+            />
+          </div>
+          <div class="col">
+            <label class="form-label">Country</label>
+
+            <select class="form-select" aria-label="Default select example">
+              <option>--select your country--</option>
+              <option>One</option>
+              <option>Two</option>
+              <option>Three</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-4 mb-4">
+          <div class="col">
+            <label for="email" class="form-label">E-Mail</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="E-Mail"
+              formControlName="email"
+            />
+          </div>
+          <div class="col">
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              placeholder="Phone"
+              formControlName="phone"
+            />
+          </div>
+          <div class="col">
+            <div class="col">
+              <label class="form-label">Profil Foto</label>
+              <input
+                type="file"
+                class="form-control"
+                id="img"
+                name="img"
+                placeholder="Profil Foto"
+                accept="image/*"
+                formControlName="img"
+                (change)="onSelectImageFile($event)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col">
+            <app-add-button
+              [label]="'Add'"
+              (addEmployees)="addEmployee()"
+            ></app-add-button>
+            <app-reset-button
+              [label]="'Reset'"
+              (resetForm)="resetForm()"
+            ></app-reset-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
