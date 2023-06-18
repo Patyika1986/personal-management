@@ -28,11 +28,11 @@ export class AddPersonalComponent implements OnInit{
   }
 
   addNewEmploye(){
-    if(this.form.status === "VALID"){
-      this.personalServiace.addPersonal(this.form.value).subscribe((allPersonals) => {
-        console.log(allPersonals,'post');
-      })
-    }
+    // if(this.form.status === "VALID"){
+    //   this.personalServiace.addPersonal(this.form.value).subscribe((allPersonals) => {
+    //     console.log(allPersonals,'post');
+    //   })
+    // }
   }
 
 

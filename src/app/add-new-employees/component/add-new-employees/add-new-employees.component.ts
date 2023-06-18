@@ -15,18 +15,19 @@ export class AddNewEmployeesComponent implements OnInit{
 
   public red:string = 'red';
   public form = this.formBuilder.group({
-    firsName:['',Validators.compose([Validators.minLength(3),Validators.maxLength(25),Validators.required])],
-    lastName:['',Validators.compose([Validators.minLength(3),Validators.maxLength(25),Validators.required])],
-    dateOfBirth:['',Validators.compose([Validators.required,Validators.minLength(8),Validators.maxLength(8)])],
-    street:['',Validators.compose([Validators.minLength(3),Validators.maxLength(25)])],
-    housNr:['',Validators.compose([Validators.minLength(8),Validators.maxLength(8),Validators.required])],
-    zipCode:['',Validators.compose([Validators.minLength(4),Validators.maxLength(4),Validators.required])],
-    city:['',Validators.compose([Validators.minLength(3),Validators.maxLength(25),Validators.required])],
-    email:['',Validators.compose([Validators.minLength(6),Validators.maxLength(35),Validators.email,Validators.required])],
-    phone:['',Validators.compose([Validators.required,Validators.minLength(6),Validators.maxLength(30)])],
-    gender:['',Validators.compose([Validators.required])],
-    img:['',Validators.compose([Validators.required])],
-    placeOfBirth:['']
+    firstName:['',Validators.compose([Validators.minLength(2),Validators.maxLength(15),Validators.required])],
+    lastName:['',Validators.compose([Validators.minLength(2),Validators.maxLength(15),Validators.required])],
+    dateOfBirth:['',Validators.required],
+    street:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    housNr:['',Validators.required],
+    zipCode:['',Validators.compose([Validators.minLength(4),Validators.maxLength(6),Validators.required])],
+    city:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    email:['',Validators.compose([Validators.minLength(6),Validators.maxLength(35),Validators.required,Validators.email])],
+    phone:['',Validators.compose([Validators.minLength(4),Validators.maxLength(25),Validators.required])],
+    gender:[''],
+    img:['',Validators.required],
+    placeOfBirth:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    country:['']
   });
 
 
@@ -39,6 +40,9 @@ export class AddNewEmployeesComponent implements OnInit{
   ];
 
   public countrys: any;
+  public selectedCountry:string = '';
+  public selectedGender:string = '';
+  public isFormValide: boolean = false;
 
 
 
@@ -60,13 +64,14 @@ export class AddNewEmployeesComponent implements OnInit{
   }
 
   selectGender(gender:any){
-    this.form.value.gender = gender.value;
+    this.selectedGender = gender.value;
+    
   }
 
 
 
   selectCountry(country:any){
-    console.log(country.value,'country');
+    this.selectedCountry = country.value;
   }
 
 
@@ -74,7 +79,18 @@ export class AddNewEmployeesComponent implements OnInit{
 
 
   addEmployee(){
-    console.log(this.form.value);
+    this.form.value.gender = this.selectedGender;
+    this.form.value.country = this.selectedCountry;
+
+    if(this.form.status === "VALID"){
+      this.personalService.addPersonal(this.form.value).subscribe();      
+    }
+
+    // if(this.form.status === "INVALID"){
+    //   console.log(this.form.status,'invalid');
+    //   this.isFormValide = true;
+    // }
+    
     
   }
 

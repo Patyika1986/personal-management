@@ -11,18 +11,19 @@ export class PersonalOverviewComponent implements OnInit{
 
   constructor(private personalService: PersonalService){}
 
-  public personals:Personals[] = [];
+  public personals:any[] = [];
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe(list => {
-      list.map((data:any) => {
-        this.personals.push(data);
-      });
+      this.personals = list
+      // list.map((data:any) => {
+      //   this.personals.push(data);
+      // });
     });
   }
 
   deletePersonal(id: string | unknown){
    // console.log(id);
-   this.personalService.deletePersonal(id).subscribe()
+  //  this.personalService.deletePersonal(id).subscribe()
   }
 
   editPersonal(id: string | unknown){
