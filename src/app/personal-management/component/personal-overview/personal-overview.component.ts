@@ -97,14 +97,16 @@ export class PersonalOverviewComponent implements OnInit {
   public selectedCountry: string = '';
   public selectedGender: string = '';
   public isFormValide: boolean = false;
-  public imageUrl: string = './assets/lakatosquadrat.jpg';
+  public imageUrl:any = '';
 
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe((list) => {
       list.map((data: any) => {
+       // this.imageUrl = data.img;
+        
         this.selectedUser.controls.id.setValue(data.id);
-        // this.selectedUser.controls.img.setValue(data.img);
-        this.imageUrl = data.img;
+         //this.selectedUser.controls.img.setValue(data.img);
+        // this.selectedUser.controls.img.setValue(this.imageUrl)
         
         this.personals.push(data);
       });
@@ -112,7 +114,6 @@ export class PersonalOverviewComponent implements OnInit {
   }
 
   selectImg() {
-
     // if(file.target.files){
     //   let fileReader = new FileReader();
     //   fileReader.readAsDataURL(file.target.files[0]);
@@ -160,7 +161,8 @@ export class PersonalOverviewComponent implements OnInit {
         selectedUser.placeOfBirth
       );
       this.selectedUser.controls.country.setValue(selectedUser.country);
-      this.selectedUser.value.img = selectedUser.img
+      this.imageUrl = selectedUser.img;
+      //this.selectedUser.value.img = selectedUser.img
     });
   }
 }
