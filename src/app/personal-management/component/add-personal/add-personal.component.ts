@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
-import { Personals } from 'src/app/Personal-Module/personals';
+import { CountryCityService } from 'src/app/service/country-city.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
+
 @Component({
   selector: 'app-add-personal',
   templateUrl: './add-personal.component.html',
@@ -9,30 +10,84 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class AddPersonalComponent implements OnInit{
 
-  constructor(public formsBuilder:FormBuilder, public personalServiace: PersonalService){}
+  constructor(public formBuilder:FormBuilder, public personalServiace: PersonalService, public countryCityServices: CountryCityService){
 
-  public form = this.formsBuilder.group({
-    firstName: ['', Validators.compose([Validators.required,Validators.minLength(3),Validators.maxLength(20)])],
-    lastName: ['', Validators.compose([Validators.required,Validators.minLength(3),Validators.maxLength(20)])],
-    email: ['', Validators.compose([Validators.required,Validators.email])],
-    tel: ['',Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(14)])],
-    id:['']
+  }
+
+   @Input()form = this.formBuilder.group({
+    firstName:['',Validators.compose([Validators.minLength(2),Validators.maxLength(15),Validators.required])],
+    lastName:['',Validators.compose([Validators.minLength(2),Validators.maxLength(15),Validators.required])],
+    dateOfBirth:['',Validators.required],
+    street:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    housNr:['',Validators.required],
+    zipCode:['',Validators.compose([Validators.minLength(4),Validators.maxLength(6),Validators.required])],
+    city:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    email:['',Validators.compose([Validators.minLength(6),Validators.maxLength(35),Validators.required,Validators.email])],
+    phone:['',Validators.compose([Validators.minLength(4),Validators.maxLength(25),Validators.required])],
+    gender:[''],
+    img:['',Validators.required],
+    placeOfBirth:['',Validators.compose([Validators.minLength(2),Validators.maxLength(25),Validators.required])],
+    country:['']
   });
 
 
 
 
 
+  public genders = [
+    "Male",
+    "Female",
+    "Other"
+  ];
+
+  public countrys: any;
+  public selectedCountry:string = '';
+  public selectedGender:string = '';
+  public isFormValide: boolean = false;
+   @Input()imageUrl = "./assets/lakatosquadrat.jpg";
+   @Output()selectImg = new EventEmitter();
+   @Output()selectcountry = new EventEmitter();
+
+
   ngOnInit(): void {
 
+    this.countrys = this.countryCityServices.getCountry();
   }
 
-  addNewEmploye(){
-    // if(this.form.status === "VALID"){
-    //   this.personalServiace.addPersonal(this.form.value).subscribe((allPersonals) => {
-    //     console.log(allPersonals,'post');
-    //   })
-    // }
+  onSelectImageFile(file:any){
+    if(file.target.files){
+      let fileReader = new FileReader();
+      fileReader.readAsDataURL(file.target.files[0]);
+      fileReader.onload = (event:any) => {
+        this.imageUrl = event.target.result;
+        this.form.value.img = this.imageUrl;
+        this.selectImg.emit(file);
+      }
+    }
+   // this.selectImg.emit(file)
+  }
+
+  selectGender(gender:any){
+    this.selectedGender = gender.value;
+    
+  }
+
+
+
+  selectCountry(country:any){
+    this.selectedCountry = country.value;
+    this.form.controls.country.setValue(country.value);    
+    console.log(country.value,'selected country');
+    
+    this.selectcountry.emit(this.countrys);
+  }
+
+  saveChanges(){
+    //this.form.value.firstName = this.form.value.firstName;
+    console.log(this.form.value);
+    
+    // hier musst du die änderungen machen von dein formular post methode baim firebase
+    
   }
 
 

@@ -10,6 +10,15 @@
     padding-left: 8rem;
     padding-top: 2rem;
 
+    #details {
+      border: 1px solid black;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: .3rem;
+      background-color: black;
+      color: whitesmoke;
+    }
+
     .material-symbols-outlined {
       font-size: 30px;
       margin-bottom: 1.3rem;

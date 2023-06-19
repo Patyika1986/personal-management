@@ -7,11 +7,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AddButtonComponent {
 
-  @Input({required:true}) label: string = '';
-  @Output() addEmployees = new EventEmitter<string>();
+  // @Input({required:true}) label: string = '';
+  // @Output() addEmployees = new EventEmitter<string>();
 
-  add($event:any){
-    this.addEmployees.emit($event);    
-  }
+  // add($event:any){
+  //   this.addEmployees.emit($event);    
+  // }
 
 }

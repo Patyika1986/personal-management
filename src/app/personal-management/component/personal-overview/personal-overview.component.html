@@ -4,7 +4,15 @@
     <span class="material-symbols-outlined" routerLink="/dashboard-overview">
       arrow_left_alt
     </span>
-    <app-add-personal></app-add-personal>
+    <div class="edit-form" *ngIf="openEditForm">
+      <h3>Change data from employee</h3>
+      <app-add-personal
+        [form]="selectedUser"
+        [imageUrl]="imageUrl"
+        (selectImg)="selectImg()"
+        (selectcountry)="selectCountry()"
+      ></app-add-personal>
+    </div>
     <table class="table table-dark">
       <thead>
         <tr>
@@ -24,7 +32,7 @@
           <td>{{ personal.lastName }}</td>
           <td>{{ personal.email }}</td>
           <td>
-            {{ personal.tel }}
+            {{ personal.phone }}
           </td>
 
           <td>

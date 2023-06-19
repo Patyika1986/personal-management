@@ -12,6 +12,7 @@ export class PersonalService {
   constructor(private http: HttpClient) { }
 
   private personalUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/personal.json';
+  private postUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/';
 
   addPersonal(personal:any):Observable<any[]>{
     const headers = new HttpHeaders({
@@ -34,6 +35,10 @@ export class PersonalService {
           return products;
         })
       );
+  }
+
+  postPersonal(personal:any,id:any):Observable<any>{
+    return this.http.put<any>(this.postUrl,personal+id+'.json')
   }
 
   // deletePersonal(id:any):Observable<any>{
