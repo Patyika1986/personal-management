@@ -90,6 +90,7 @@ export class PersonalOverviewComponent implements OnInit {
       ]),
     ],
     country: [''],
+    id:['']
   });
 
   public countrys: any;
@@ -101,13 +102,16 @@ export class PersonalOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe((list) => {
       list.map((data: any) => {
+        this.selectedUser.controls.id.setValue(data.id);
+        // this.selectedUser.controls.img.setValue(data.img);
+        this.imageUrl = data.img;
+        
         this.personals.push(data);
       });
     });
   }
 
   selectImg() {
-    console.log('run');
 
     // if(file.target.files){
     //   let fileReader = new FileReader();
@@ -118,7 +122,6 @@ export class PersonalOverviewComponent implements OnInit {
     //     this.selectImg.emit(file);
     //   }
     // }
-    console.log(this.selectedUser.value.img);
   }
   selectGender(gender: any) {
     this.selectedGender = gender.value;
@@ -157,8 +160,7 @@ export class PersonalOverviewComponent implements OnInit {
         selectedUser.placeOfBirth
       );
       this.selectedUser.controls.country.setValue(selectedUser.country);
-      this.selectedUser.value.img = this.imageUrl;
+      this.selectedUser.value.img = selectedUser.img
     });
-    console.log(this.selectedUser.value);
   }
 }

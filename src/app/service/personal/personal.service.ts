@@ -3,42 +3,43 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Personals } from 'src/app/Personal-Module/personals';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonalService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  private personalUrl: string =
+    'https://personal-management-1293e-default-rtdb.firebaseio.com/personal.json';
+  private postUrl: string =
+    'https://personal-management-1293e-default-rtdb.firebaseio.com/personal/';
 
-  private personalUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/personal.json';
-  private postUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/';
-
-  addPersonal(personal:any):Observable<any[]>{
+  addPersonal(personal: any): Observable<any[]> {
     const headers = new HttpHeaders({
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json',
     });
-    return this.http.post<any[]>(this.personalUrl,personal);
+    return this.http.post<any[]>(this.personalUrl, personal);
   }
 
-  getPersonal():Observable<any>{
-    return this.http
-      .get(this.personalUrl)
-      .pipe(
-        map((res: any) => {
-          const products = [];
-          for (const key in res) {
-            if (res.hasOwnProperty(key)) {
-              products.push({ ...res[key], id: key });
-            }
+  getPersonal(): Observable<any> {
+    return this.http.get(this.personalUrl).pipe(
+      map((res: any) => {
+        const products = [];
+        for (const key in res) {
+          if (res.hasOwnProperty(key)) {
+            products.push({ ...res[key], id: key });
           }
-          return products;
-        })
-      );
+        }
+        return products;
+      })
+    );
   }
 
-  postPersonal(personal:any,id:any):Observable<any>{
-    return this.http.put<any>(this.postUrl,personal+id+'.json')
+  postPersonal(personal: any, id: any): Observable<any> {
+    console.log(id);
+    
+    const data = this.http.put('https://personal-management-1293e-default-rtdb.firebaseio.com/personal/' +id+ '.json',personal);
+    return data;
   }
 
   // deletePersonal(id:any):Observable<any>{
