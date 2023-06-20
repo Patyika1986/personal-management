@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Personals } from 'src/app/Personal-Module/personals';
 
@@ -8,6 +8,8 @@ import { Personals } from 'src/app/Personal-Module/personals';
 })
 export class PersonalService {
   constructor(private http: HttpClient) {}
+
+  selectedEmployeeId = signal('');
 
   private personalUrl: string =
     'https://personal-management-1293e-default-rtdb.firebaseio.com/personal.json';

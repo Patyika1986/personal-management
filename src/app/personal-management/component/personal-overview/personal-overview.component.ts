@@ -102,12 +102,9 @@ export class PersonalOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe((list) => {
       list.map((data: any) => {
-       // this.imageUrl = data.img;
-        
         this.selectedUser.controls.id.setValue(data.id);
-         //this.selectedUser.controls.img.setValue(data.img);
-        // this.selectedUser.controls.img.setValue(this.imageUrl)
-        
+        console.log(data.img);
+        this.imageUrl = data.img;
         this.personals.push(data);
       });
     });
@@ -138,31 +135,41 @@ export class PersonalOverviewComponent implements OnInit {
   }
 
   /**
-   * lädt nur die daten von der user
-   * was angeklickt worden ist
-   * @param id string
+   * Save data from form in to database
+   * 
+   * @param {string} id
    */
-  editPersonal(id: string | unknown) {
+  editPersonal(id: string) {
+    
     this.openEditForm = true;
     this.personalService.getPersonal().subscribe((data) => {
-      this.selectImg();
       const selectedUser = data.find((user: any) => user.id === id);
-      this.selectedUser.controls.firstName.setValue(selectedUser.firstName);
-      this.selectedUser.controls.lastName.setValue(selectedUser.lastName);
-      this.selectedUser.controls.dateOfBirth.setValue(selectedUser.dateOfBirth);
-      this.selectedUser.controls.street.setValue(selectedUser.street);
-      this.selectedUser.controls.housNr.setValue(selectedUser.housNr);
-      this.selectedUser.controls.zipCode.setValue(selectedUser.zipCode);
-      this.selectedUser.controls.city.setValue(selectedUser.city);
-      this.selectedUser.controls.email.setValue(selectedUser.email);
-      this.selectedUser.controls.phone.setValue(selectedUser.phone);
-      this.selectedUser.controls.gender.setValue(selectedUser.gender);
-      this.selectedUser.controls.placeOfBirth.setValue(
-        selectedUser.placeOfBirth
-      );
-      this.selectedUser.controls.country.setValue(selectedUser.country);
-      this.imageUrl = selectedUser.img;
-      //this.selectedUser.value.img = selectedUser.img
+      console.log(selectedUser,'selected user');
+      
+      if(selectedUser){
+        //save the id from selected employee
+        this.personalService.selectedEmployeeId.set(id);
+
+        // set values from form to data
+        this.selectedUser.controls.firstName.setValue(selectedUser.firstName);
+        this.selectedUser.controls.lastName.setValue(selectedUser.lastName);
+        this.selectedUser.controls.dateOfBirth.setValue(selectedUser.dateOfBirth);
+        this.selectedUser.controls.street.setValue(selectedUser.street);
+        this.selectedUser.controls.housNr.setValue(selectedUser.housNr);
+        this.selectedUser.controls.zipCode.setValue(selectedUser.zipCode);
+        this.selectedUser.controls.city.setValue(selectedUser.city);
+        this.selectedUser.controls.email.setValue(selectedUser.email);
+        this.selectedUser.controls.phone.setValue(selectedUser.phone);
+        this.selectedUser.controls.gender.setValue(selectedUser.gender);
+        this.selectedUser.controls.placeOfBirth.setValue(
+          selectedUser.placeOfBirth
+        );
+        this.selectedUser.controls.country.setValue(selectedUser.country);
+        this.imageUrl = selectedUser.img;
+        this.selectedUser.value.img = selectedUser.img
+        console.log(this.selectedUser.value.img);
+        
+      }
     });
   }
 }

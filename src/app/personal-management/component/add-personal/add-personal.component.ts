@@ -129,12 +129,15 @@ export class AddPersonalComponent implements OnInit {
   saveChanges(form: any) {
     this.personalServiace.getPersonal().subscribe((personalList) => {
       const result = personalList.find(
-        (person: any) => person.id === form.value.id
+        (person: any) => person.id === this.personalServiace.selectedEmployeeId()
       );
-      if (result) {
+      if (result) {        
         this.personalServiace
-          .postPersonal(this.form.value, result.id)
-          .subscribe();
+          .postPersonal(this.form.value, this.personalServiace.selectedEmployeeId())
+          .subscribe((list) => {
+            console.log(list,'list');
+            this.imageUrl = list.img;
+          });
       }
     });
   }
