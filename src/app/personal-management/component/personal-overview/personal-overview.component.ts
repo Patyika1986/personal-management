@@ -90,20 +90,19 @@ export class PersonalOverviewComponent implements OnInit {
       ]),
     ],
     country: [''],
-    id:['']
+    id: [''],
   });
 
   public countrys: any;
   public selectedCountry: string = '';
   public selectedGender: string = '';
   public isFormValide: boolean = false;
-  public imageUrl:any = '';
+  public imageUrl: any = '';
 
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe((list) => {
       list.map((data: any) => {
         this.selectedUser.controls.id.setValue(data.id);
-        console.log(data.img);
         this.imageUrl = data.img;
         this.personals.push(data);
       });
@@ -136,24 +135,24 @@ export class PersonalOverviewComponent implements OnInit {
 
   /**
    * Save data from form in to database
-   * 
+   *
    * @param {string} id
    */
   editPersonal(id: string) {
-    
     this.openEditForm = true;
     this.personalService.getPersonal().subscribe((data) => {
       const selectedUser = data.find((user: any) => user.id === id);
-      console.log(selectedUser,'selected user');
-      
-      if(selectedUser){
+
+      if (selectedUser) {
         //save the id from selected employee
         this.personalService.selectedEmployeeId.set(id);
 
         // set values from form to data
         this.selectedUser.controls.firstName.setValue(selectedUser.firstName);
         this.selectedUser.controls.lastName.setValue(selectedUser.lastName);
-        this.selectedUser.controls.dateOfBirth.setValue(selectedUser.dateOfBirth);
+        this.selectedUser.controls.dateOfBirth.setValue(
+          selectedUser.dateOfBirth
+        );
         this.selectedUser.controls.street.setValue(selectedUser.street);
         this.selectedUser.controls.housNr.setValue(selectedUser.housNr);
         this.selectedUser.controls.zipCode.setValue(selectedUser.zipCode);
@@ -166,9 +165,7 @@ export class PersonalOverviewComponent implements OnInit {
         );
         this.selectedUser.controls.country.setValue(selectedUser.country);
         this.imageUrl = selectedUser.img;
-        this.selectedUser.value.img = selectedUser.img
-        console.log(this.selectedUser.value.img);
-        
+        this.selectedUser.value.img = selectedUser.img;
       }
     });
   }

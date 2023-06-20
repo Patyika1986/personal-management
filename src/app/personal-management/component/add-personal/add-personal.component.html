@@ -338,8 +338,15 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div class="alert alert-success fw-bold" role="alert">
-          Saving the changes was successful
+        <div
+          class="alert alert-success fw-bold"
+          role="alert"
+          *ngIf="isChangeSuccessfuly"
+        >
+          {{ modalText }}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="changeIsWrong">
+          {{ modalText }}
         </div>
       </div>
       <div class="modal-footer">

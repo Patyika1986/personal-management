@@ -98,6 +98,9 @@ export class AddPersonalComponent implements OnInit {
   @Input() imageUrl = './assets/lakatosquadrat.jpg';
   @Output() selectImg = new EventEmitter();
   @Output() selectcountry = new EventEmitter();
+  public modalText: string = 'Saving the changes was successful';
+  public isChangeSuccessfuly: boolean = true;
+  public changeIsWrong: boolean = false;
 
   ngOnInit(): void {
     this.countrys = this.countryCityServices.getCountry();
@@ -129,22 +132,26 @@ export class AddPersonalComponent implements OnInit {
   saveChanges(form: any) {
     this.personalServiace.getPersonal().subscribe((personalList) => {
       const result = personalList.find(
-        (person: any) => person.id === this.personalServiace.selectedEmployeeId()
+        (person: any) =>
+          person.id === this.personalServiace.selectedEmployeeId()
       );
-      if (result) {        
+
+      if (result) {
         this.personalServiace
-          .postPersonal(this.form.value, this.personalServiace.selectedEmployeeId())
+          .postPersonal(
+            this.form.value,
+            this.personalServiace.selectedEmployeeId()
+          )
           .subscribe((list) => {
-            console.log(list,'list');
             this.imageUrl = list.img;
           });
+      } else {
+        this.isChangeSuccessfuly = false;
+        this.changeIsWrong = true;
+        this.modalText = 'Change was unsuccessful';
       }
     });
   }
-
-
-
-
 
   resetForm() {
     this.form.reset();
