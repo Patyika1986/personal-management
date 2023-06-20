@@ -43,13 +43,12 @@ export class AddNewEmployeesComponent implements OnInit{
   public selectedCountry:string = '';
   public selectedGender:string = '';
   public isFormValide: boolean = false;
-
-
-
+  public modalText: string = '';
+  public isAddSuccessfoly: boolean = true;
+  public addIsWrong: boolean = false;
 
   ngOnInit(): void {
-    this.countrys = this.countryCityServices.getCountry();
-      
+    this.countrys = this.countryCityServices.getCountry();  
   }
 
   onSelectImageFile(file:any){
@@ -65,31 +64,25 @@ export class AddNewEmployeesComponent implements OnInit{
 
   selectGender(gender:any){
     this.selectedGender = gender.value;
-    
   }
-
-
 
   selectCountry(country:any){
     this.selectedCountry = country.value;
   }
-
-
-
-
 
   addEmployee(){
     this.form.value.gender = this.selectedGender;
     this.form.value.country = this.selectedCountry;
 
     if(this.form.status === "VALID"){
-      this.personalService.addPersonal(this.form.value).subscribe();      
+      this.personalService.addPersonal(this.form.value).subscribe(() => {
+        this.modalText = 'Add new employee was successfuly';
+      });      
+    }else{
+      this.isAddSuccessfoly = false;
+      this.addIsWrong = true;
+      this.modalText = 'Adding new employees was unsuccessful please try hard';
     }
-
-    // if(this.form.status === "INVALID"){
-    //   console.log(this.form.status,'invalid');
-    //   this.isFormValide = true;
-    // }
     
     
   }
