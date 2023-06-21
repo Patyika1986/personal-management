@@ -128,10 +128,7 @@ export class PersonalOverviewComponent implements OnInit {
     this.countrys = this.countryCityServices.getCountry();
   }
   details() {}
-  deletePersonal(id: string | unknown) {
-    // console.log(id);
-    //  this.personalService.deletePersonal(id).subscribe()
-  }
+
 
   /**
    * Save data from form in to database
@@ -168,5 +165,26 @@ export class PersonalOverviewComponent implements OnInit {
         this.selectedUser.value.img = selectedUser.img;
       }
     });
+  }
+
+
+  /**
+   * delete employee
+   * find employee with the same id
+   * when result true is than
+   * don't open modal and delete the employee from firebase
+   * find indexOf from result
+   * and splice employee withe index from frontend
+   * @param {string} id 
+   */
+  deletePersonal(id: string) {
+    const result = this.personals.find(person => person.id === id);
+    if(result){
+      this.openEditForm = false;
+      this.personalService.deletePersonal(id).subscribe();
+      this.personals.find(personal => personal.id === id)
+      const index = this.personals.indexOf(result);
+      this.personals.splice(index,1);
+    }
   }
 }

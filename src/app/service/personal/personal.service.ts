@@ -44,7 +44,7 @@ export class PersonalService {
     return data;
   }
 
-  // deletePersonal(id:any):Observable<any>{
-  //   return this.http.delete<any>(`https://personal-management-1293e-default-rtdb.firebaseio.com/add-personal/${id}.json`);
-  // }
+  deletePersonal(id:any):Observable<any>{
+    return this.http.delete<any>(`https://personal-management-1293e-default-rtdb.firebaseio.com/personal/${id}.json`);
+  }
 }
