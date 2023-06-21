@@ -1,11 +1,7 @@
 <app-side-navbar></app-side-navbar>
 <div class="cont">
   <div class="boxes">
-    <span class="material-symbols-outlined" routerLink="/dashboard-overview">
-      arrow_left_alt
-    </span>
     <div class="edit-form" *ngIf="openEditForm">
-      <h3>Change data from employee</h3>
       <app-add-personal
         [form]="selectedUser"
         [imageUrl]="imageUrl"
@@ -27,7 +23,7 @@
       </thead>
       <tbody class="table-group-divider">
         <tr *ngFor="let personal of personals">
-          <th scope="row">{{ personal.id }}</th>
+          <th>{{ personal.id }}</th>
           <td>{{ personal.firstName }}</td>
           <td>{{ personal.lastName }}</td>
           <td>{{ personal.email }}</td>

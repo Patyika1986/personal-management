@@ -1,47 +1,70 @@
-#add-btn {
-    color: black;
-    padding: 8px 22px;
-    border-radius: 6px;
-    border: none;
-    font-weight: 600;
-    margin-right: 1rem;
-    background: var(--links-color);
-    transition: all 0.2s ease;
+.cont {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bgc);
+  color: var(--textColor);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
 
-    &:active{
-        transform: scale(0.96);
-        opacity: .9;
+  .box {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    @media (max-width: 1300px) {
+      width: 75%;
     }
-}
 
-button{
-    margin-left: .3rem;
-    margin-right: .3rem;
-    transition: all 0.2s ease;
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
 
-    &:active{
-        transform: scale(0.96);
-        opacity: .9;
-    }
-}
-
-.image-box{
-    width: 300px;
-    height: auto;
-
-    img{
+      .row {
         width: 100%;
-        height: auto;
-    }
-}
-
-.container{
-    form{
-        .row{
-            .col{
-
-            }
+        @media (max-width: 768px) {
+          flex-direction: column;
         }
-    }
-}
+        .cols {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          @media (max-width: 768px) {
+            flex-direction: column;
+            padding: 1rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+          }
 
+          .col1 {
+            width: 100%;
+
+            .header-title {
+              font-size: 2.5rem;
+            }
+          }
+          .col2 .image-box {
+            width: 200px;
+            height: auto;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .col {
+          #reset-btn {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

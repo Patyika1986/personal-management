@@ -1,358 +1,363 @@
-<div class="contaienr bg-dark p-5 mb-3 text-light">
-  <form [formGroup]="form">
-    <div class="row">
-      <div class="col">
-        <h1>Edit Employee</h1>
-      </div>
-      <div class="col">
-        <div class="image-box">
-          <img [src]="imageUrl" alt="Your Profile image" id="img" />
+<div class="cont">
+  <div class="box">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="cols">
+          <div class="col1">
+            <span class="header-title">Edit Employee</span>
+          </div>
+          <div class="col2">
+            <div class="image-box">
+              <img [src]="imageUrl" alt="Your Profile image" id="img" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row mt-5 mb-4">
-      <div class="col">
-        <label for="firsName" class="form-label"
-          >Firstname <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="firsName"
-          name="firstName"
-          placeholder="Firstname"
-          formControlName="firstName"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('firstName')?.hasError('minlength')"
-          >The Firstname is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('firstName')?.hasError('maxlength')"
-          >The Firstname is too long</label
-        >
-      </div>
-      <div class="col">
-        <label for="lastName" class="form-label"
-          >Lastname <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="lastName"
-          name="lastName"
-          placeholder="Lastname"
-          formControlName="lastName"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('lastName')?.hasError('minlength')"
-          >The Lastname is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('lastName')?.hasError('maxlength')"
-          >The Lastname is too long</label
-        >
-      </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col">
-        <label for="dateOfBirth" class="form-label"
-          >Date of birth <span class="required">*</span></label
-        >
-        <input
-          type="date"
-          class="form-control"
-          id="dateOfBirth"
-          name="dateOfBirth"
-          placeholder="Date of birth"
-          formControlName="dateOfBirth"
-        />
-      </div>
-      <div class="col">
-        <label class="form-label"
-          >Place of birth <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="placeOfBirth"
-          name="placeOfBirth"
-          placeholder="Place of birth"
-          formControlName="placeOfBirth"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('placeOfBirth')?.hasError('minlength')"
-          >The name is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('placeOfBirth')?.hasError('maxlength')"
-          >The name is too long</label
-        >
-      </div>
-      <div class="col">
-        <label class="form-label">Gender <span class="required">*</span></label>
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          (change)="selectGender($event.target)"
-        >
-          <option selected>-- Gender --</option>
-          <option *ngFor="let gender of genders">
-            {{ gender }}
-          </option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col">
-        <label for="street" class="form-label"
-          >Street <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="street"
-          name="street"
-          placeholder="Street"
-          formControlName="street"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('street')?.hasError('minlength')"
-          >The street name is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('street')?.hasError('maxlength')"
-          >The street name is too long</label
-        >
-      </div>
-      <div class="col">
-        <label for="housNr" class="form-label"
-          >Hous nr <span class="required">*</span></label
-        >
-        <input
-          type="number"
-          class="form-control"
-          id="housNr"
-          name="housNr"
-          placeholder="Hous nr"
-          formControlName="housNr"
-        />
-      </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col">
-        <label for="zipCode" class="form-label"
-          >Zip Code <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="zipCode"
-          name="zipCode"
-          placeholder="Zip Code"
-          formControlName="zipCode"
-        />
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('zipCode')?.hasError('minlength')"
-          >the zip code must consist of at least 4 digits</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('zipCode')?.hasError('maxlength')"
-          >the zip code may consist of a maximum of 4 digits</label
-        >
-      </div>
-      <div class="col">
-        <label for="city" class="form-label"
-          >City <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="city"
-          name="city"
-          placeholder="City"
-          formControlName="city"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('city')?.hasError('minlength')"
-          >The city name is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('city')?.hasError('maxlength')"
-          >The city name is too long</label
-        >
-      </div>
-      <div class="col">
-        <label class="form-label"
-          >Country <span class="required">*</span></label
-        >
-
-        <select class="form-select" (change)="selectCountry($event.target)">
-          <option>--select your country--</option>
-          <option *ngFor="let country of countrys">
-            {{ country.name }}
-          </option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row mt-4 mb-4">
-      <div class="col">
-        <label for="email" class="form-label"
-          >E-Mail <span class="required">*</span></label
-        >
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          placeholder="E-Mail"
-          formControlName="email"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('email')?.hasError('minlength')"
-          >The email address is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('email')?.hasError('maxlength')"
-          >The email address is too long</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('email')?.hasError('email')"
-          >It is not a valid email address</label
-        >
-      </div>
-      <div class="col">
-        <label for="phone" class="form-label"
-          >Phone <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="phone"
-          name="phone"
-          placeholder="Phone"
-          formControlName="phone"
-        />
-        <label
-          class="text-warning mt-2 mx-2 fw-bold"
-          *ngIf="form.get('phone')?.hasError('minlength')"
-          >The phone number is too short</label
-        >
-        <label
-          class="text-danger mt-2 mx-2 fw-bold"
-          *ngIf="form.get('phone')?.hasError('maxlength')"
-          >The prone number is too long</label
-        >
-      </div>
-      <div class="col">
+      <div class="row mt-5 mb-4">
         <div class="col">
-          <label class="form-label"
-            >Profil Foto <span class="required">*</span></label
+          <label for="firsName" class="form-label"
+            >Firstname <span class="required">*</span></label
           >
           <input
-            type="file"
+            type="text"
             class="form-control"
-            id="img"
-            name="img"
-            placeholder="Profil Foto"
-            accept="image/*"
-            formControlName="img"
-            (change)="onSelectImageFile($event)"
+            id="firsName"
+            name="firstName"
+            placeholder="Firstname"
+            formControlName="firstName"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('firstName')?.hasError('minlength')"
+            >The Firstname is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('firstName')?.hasError('maxlength')"
+            >The Firstname is too long</label
+          >
+        </div>
+        <div class="col">
+          <label for="lastName" class="form-label"
+            >Lastname <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Lastname"
+            formControlName="lastName"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('lastName')?.hasError('minlength')"
+            >The Lastname is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('lastName')?.hasError('maxlength')"
+            >The Lastname is too long</label
+          >
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <label for="dateOfBirth" class="form-label"
+            >Date of birth <span class="required">*</span></label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            placeholder="Date of birth"
+            formControlName="dateOfBirth"
+          />
+        </div>
+        <div class="col">
+          <label class="form-label"
+            >Place of birth <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="placeOfBirth"
+            name="placeOfBirth"
+            placeholder="Place of birth"
+            formControlName="placeOfBirth"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('placeOfBirth')?.hasError('minlength')"
+            >The name is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('placeOfBirth')?.hasError('maxlength')"
+            >The name is too long</label
+          >
+        </div>
+        <div class="col">
+          <label class="form-label"
+            >Gender <span class="required">*</span></label
+          >
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="selectGender($event.target)"
+          >
+            <option selected>-- Gender --</option>
+            <option *ngFor="let gender of genders">
+              {{ gender }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <label for="street" class="form-label"
+            >Street <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            name="street"
+            placeholder="Street"
+            formControlName="street"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('street')?.hasError('minlength')"
+            >The street name is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('street')?.hasError('maxlength')"
+            >The street name is too long</label
+          >
+        </div>
+        <div class="col">
+          <label for="housNr" class="form-label"
+            >Hous nr <span class="required">*</span></label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="housNr"
+            name="housNr"
+            placeholder="Hous nr"
+            formControlName="housNr"
           />
         </div>
       </div>
-    </div>
 
-    <div class="row mt-4">
-      <div class="col">
-        <button
-          class="btn btn-success fw-bold"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          (click)="saveChanges(form)"
-        >
-          Save changes
-        </button>
+      <div class="row mb-4">
+        <div class="col">
+          <label for="zipCode" class="form-label"
+            >Zip Code <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="zipCode"
+            name="zipCode"
+            placeholder="Zip Code"
+            formControlName="zipCode"
+          />
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('zipCode')?.hasError('minlength')"
+            >the zip code must consist of at least 4 digits</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('zipCode')?.hasError('maxlength')"
+            >the zip code may consist of a maximum of 4 digits</label
+          >
+        </div>
+        <div class="col">
+          <label for="city" class="form-label"
+            >City <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            placeholder="City"
+            formControlName="city"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('city')?.hasError('minlength')"
+            >The city name is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('city')?.hasError('maxlength')"
+            >The city name is too long</label
+          >
+        </div>
+        <div class="col">
+          <label class="form-label"
+            >Country <span class="required">*</span></label
+          >
 
-        <button
-          class="btn btn-danger fw-bold"
-          id="reset-btn"
-          (click)="resetForm()"
-        >
-          Reset
-        </button>
-      </div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col">
-        <div
-          class="alert alert-danger fw-bold"
-          role="alert"
-          *ngIf="isFormValide"
-        >
-          Please fill out all fields marked with an asterisk * !
+          <select class="form-select" (change)="selectCountry($event.target)">
+            <option>--select your country--</option>
+            <option *ngFor="let country of countrys">
+              {{ country.name }}
+            </option>
+          </select>
         </div>
       </div>
-    </div>
-  </form>
-</div>
 
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Data</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div
-          class="alert alert-success fw-bold"
-          role="alert"
-          *ngIf="isChangeSuccessfuly"
-        >
-          {{ modalText }}
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <label for="email" class="form-label"
+            >E-Mail <span class="required">*</span></label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="E-Mail"
+            formControlName="email"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('email')?.hasError('minlength')"
+            >The email address is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('email')?.hasError('maxlength')"
+            >The email address is too long</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('email')?.hasError('email')"
+            >It is not a valid email address</label
+          >
         </div>
-        <div class="alert alert-danger" role="alert" *ngIf="changeIsWrong">
-          {{ modalText }}
+        <div class="col">
+          <label for="phone" class="form-label"
+            >Phone <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            placeholder="Phone"
+            formControlName="phone"
+          />
+          <label
+            class="text-warning mt-2 mx-2 fw-bold"
+            *ngIf="form.get('phone')?.hasError('minlength')"
+            >The phone number is too short</label
+          >
+          <label
+            class="text-danger mt-2 mx-2 fw-bold"
+            *ngIf="form.get('phone')?.hasError('maxlength')"
+            >The prone number is too long</label
+          >
+        </div>
+        <div class="col">
+          <div class="col">
+            <label class="form-label"
+              >Profil Foto <span class="required">*</span></label
+            >
+            <input
+              type="file"
+              class="form-control"
+              id="img"
+              name="img"
+              placeholder="Profil Foto"
+              accept="image/*"
+              formControlName="img"
+              (change)="onSelectImageFile($event)"
+            />
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-          Close
-        </button>
+
+      <div class="row mt-4">
+        <div class="col">
+          <button
+            class="btn btn-success fw-bold"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="saveChanges(form)"
+          >
+            Save changes
+          </button>
+
+          <button
+            class="btn btn-danger fw-bold"
+            id="reset-btn"
+            (click)="resetForm()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col">
+          <div
+            class="alert alert-danger fw-bold"
+            role="alert"
+            *ngIf="isFormValide"
+          >
+            Please fill out all fields marked with an asterisk * !
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Change Data</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div
+            class="alert alert-success fw-bold"
+            role="alert"
+            *ngIf="isChangeSuccessfuly"
+          >
+            {{ modalText }}
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="changeIsWrong">
+            {{ modalText }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div>
