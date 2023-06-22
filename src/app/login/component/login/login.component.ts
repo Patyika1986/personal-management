@@ -45,7 +45,7 @@ export class LoginComponent {
     this.personalService.getPersonal().subscribe(list => {
       for(let i = 0; i < list.length; i++){
         if(list[i].email == this.form.value.email && list[i].id == this.form.value.password){
-           this.loginService.postLogin(this.form.value).subscribe()
+           this.loginService.postLogin(this.form.value).subscribe();
           return
         }
       } 
