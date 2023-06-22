@@ -1,1 +1,137 @@
-<p>create-new-order works!</p>
+<form>
+  <div class="row mb-5">
+    <div class="col">
+      <h2>Create new order</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Customer name</label>
+      <input
+        type="text"
+        name="customerName"
+        class="form-control"
+        placeholder="Customer name"
+        formControlName="customerName"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Order title</label>
+      <input
+        type="text"
+        name="orderTitle"
+        class="form-control"
+        placeholder="Order title"
+        formControlName="orderTitle"
+      />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <label class="form-label">Order description</label>
+      <input
+        type="text"
+        name="orderDescription"
+        class="form-control"
+        placeholder="Order description"
+        formControlName="orderDescription"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Order date</label>
+      <input
+        type="date"
+        name="date"
+        class="form-control"
+        formControlName="orderDate"
+      />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <label class="form-label">Street</label>
+      <input
+        type="text"
+        name="street"
+        class="form-control"
+        placeholder="Street"
+        formControlName="street"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Number</label>
+      <input
+        type="number"
+        name="number"
+        class="form-control"
+        placeholder="Number"
+        formControlName="number"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Zipcode</label>
+      <input
+        type="number"
+        name="zipCode"
+        class="form-control"
+        placeholder="Zipcode"
+        formControlName="zipCode"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">City</label>
+      <input
+        type="text"
+        name="city"
+        class="form-control"
+        placeholder="City"
+        formControlName="city"
+      />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <label class="form-label">E-Mail</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        placeholder="E-Mail"
+        formControlName="email"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Phone</label>
+      <input
+        type="text"
+        name="phone"
+        class="form-control"
+        placeholder="Phone"
+        formControlName="phone"
+      />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <label class="form-label">Additional message</label>
+      <textarea
+        name="message"
+        class="form-control"
+        placeholder="Additional message"
+        formControlName="message"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <button class="btn btn-success">Save</button>
+      <button class="btn btn-warning mx-2">Cancel</button>
+      <button class="btn btn-danger">Reset</button>
+    </div>
+  </div>
+</form>

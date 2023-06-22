@@ -1,5 +1,23 @@
 .cont {
-    width: 100vw;
-    height: 100vh;
-    background-color: red;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bgc);
+    color: var(--textColor);
+    display: flex;
+    justify-content: space-around;
+
+    .box{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        //  border: 1px solid gray;
+
+        .formular{
+            width: 100%;
+            _height: 50%;
+            padding-top: 2rem;
+            // border: 1px solid red;
+        }
+
+    }
 }

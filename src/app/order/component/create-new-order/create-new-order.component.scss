@@ -1,0 +1,20 @@
+form{
+    width: 100%;
+    // box-shadow: 0px 0px .1rem black;
+    padding: 1rem;
+    border-radius: .3rem;
+
+    .row{
+        @media(max-width: 820px){
+            flex-direction: column;
+        }
+
+        .col{
+            .btn-danger{
+                @media(max-width: 433px){
+                    margin-top: .3rem;
+                }
+            }
+        }
+    }
+}
