@@ -5,6 +5,7 @@ import { PersonalOverviewComponent } from './personal-management/component/perso
 import { AddPersonalComponent } from './personal-management/component/add-personal/add-personal.component';
 import { AddNewEmployeesComponent } from './add-new-employees/component/add-new-employees/add-new-employees.component';
 import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
+import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'add-personal', component: AddPersonalComponent },
   { path: 'add-new-employe', component: AddNewEmployeesComponent },
   { path: 'order-overview', component: OrderOverviewComponent },
+  { path: 'current-orders-overview', component: CurrentOrdersOverviewComponent },
   { path: '', redirectTo: 'dashboard-overview', pathMatch: 'full' }
 ];
 

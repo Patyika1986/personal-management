@@ -16,6 +16,7 @@ import { AddButtonComponent } from './component/add-button/add-button.component'
 import { ResetButtonComponent } from './component/reset-button/reset-button.component';
 import { CreateNewOrderComponent } from './order/component/create-new-order/create-new-order.component';
 import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
+import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { OrderOverviewComponent } from './order/component/order-overview/order-o
     ResetButtonComponent,
     OrderOverviewComponent,
     CreateNewOrderComponent,
+    CurrentOrdersOverviewComponent
   ],
   imports: [
     BrowserModule,

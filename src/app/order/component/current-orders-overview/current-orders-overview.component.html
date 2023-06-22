@@ -1,0 +1,51 @@
+<div class="cont">
+  <div class="box">
+    <app-side-navbar></app-side-navbar>
+    <div class="orders">
+      <div class="row">
+        <div class="col">
+          <span
+            class="material-symbols-outlined"
+            routerLink="/dashboard-overview"
+          >
+            arrow_back
+          </span>
+        </div>
+        <div class="col">
+          <h3>Current Orders</h3>
+        </div>
+      </div>
+      <div class="list-group" *ngFor="let order of orderList">
+        <a
+          class="list-group-item bg-dark text-light list-group-item-action"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ order.title }}</h5>
+            <small>
+              <strong>{{ order.orderDate }}</strong>
+            </small>
+          </div>
+          <p class="mb-1">
+            <strong>Customername: {{ order.customerName }}</strong>
+          </p>
+          <hr />
+          <p class="mb-1">Street: {{ order.street }}</p>
+          <p class="mb-1">Housnumber: {{ order.housNumber }}</p>
+          <p class="mb-1">Zipcode: {{ order.zipCode }}</p>
+          <p class="mb-1">City: {{ order.city }}</p>
+          <p class="mb-1">Phone: {{ order.phone }}</p>
+          <p class="mb-1">E-Mail: {{ order.email }}</p>
+          <hr />
+          <p class="mb-1">Description: {{ order.orderDescription }}</p>
+          <p class="mb-1">Message: {{ order.message }}</p>
+          <small
+            ><strong
+              >Selected employee: {{ order.selectEmployee }}</strong
+            ></small
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
