@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddNewEmployeesComponent } from './add-new-employees/component/add-new-employees/add-new-employees.component';
 import { AddButtonComponent } from './component/add-button/add-button.component';
 import { ResetButtonComponent } from './component/reset-button/reset-button.component';
+import { CreateNewOrderComponent } from './order/component/create-new-order/create-new-order.component';
+import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ResetButtonComponent } from './component/reset-button/reset-button.comp
     AddPersonalComponent,
     AddNewEmployeesComponent,
     AddButtonComponent,
-    ResetButtonComponent
+    ResetButtonComponent,
+    OrderOverviewComponent,
+    CreateNewOrderComponent,
   ],
   imports: [
     BrowserModule,

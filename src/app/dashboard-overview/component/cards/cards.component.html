@@ -1,7 +1,11 @@
 <div class="card-box">
   <div class="row">
     <div class="col">
-      <div class="card" (click)="navigateToPersonal()">
+      <div
+        class="card"
+        routerLink="/personal-overview"
+        routerLinkActive="active"
+      >
         <div class="card-body">
           <h5 class="text-break">Personalmanagement</h5>
           <div class="list-group mt-5">
@@ -21,9 +25,9 @@
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div class="card" routerLink="/order-overview" routerLinkActive="active">
         <div class="card-body">
-          <h5>Timemanagement</h5>
+          <h5>Create new order</h5>
           <div class="list-group mt-5">
             <a
               class="list-group-item bg-transparent border border-0"
