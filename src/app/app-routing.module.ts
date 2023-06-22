@@ -6,6 +6,7 @@ import { AddPersonalComponent } from './personal-management/component/add-person
 import { AddNewEmployeesComponent } from './add-new-employees/component/add-new-employees/add-new-employees.component';
 import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
 import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
+import { LoginComponent } from './login/component/login/login.component';
 
 
 const routes: Routes = [
@@ -14,12 +15,14 @@ const routes: Routes = [
   { path: 'personal-module', loadChildren: () => import('./service/personal/personal.module').then(personal => personal.PersonalModule)},
   { path: 'add-new-employees', loadChildren: () => import('./add-new-employees/add-new-employees.module').then(newEmployees => newEmployees.AddNewEmployeesModule)},
   { path: 'order-module', loadChildren: () => import('./order/order.module').then(order => order.OrderModule)},
+  { path: 'login-module', loadChildren: () => import('./login/login.module').then(login => login.LoginModule)},
   { path: 'dashboard-overview', component: DashboardOverviewComponent },
   { path: 'personal-overview', component: PersonalOverviewComponent },
   { path: 'add-personal', component: AddPersonalComponent },
   { path: 'add-new-employe', component: AddNewEmployeesComponent },
   { path: 'order-overview', component: OrderOverviewComponent },
   { path: 'current-orders-overview', component: CurrentOrdersOverviewComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'dashboard-overview', pathMatch: 'full' }
 ];
 
