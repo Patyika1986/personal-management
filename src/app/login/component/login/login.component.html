@@ -1,1 +1,80 @@
-<p>login works!</p>
+<div class="cont">
+  <div class="box">
+    <div class="light-mode">
+      <div class="form-check form-switch" (change)="lightMode($event)">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckChecked"
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center">Login</h2>
+        </div>
+      </div>
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <label class="form-label">E-Mail</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="e.G mail@mail.com"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <label class="form-label">Personal ID</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Your personal ID is your Password !"
+            formControlName="password"
+          />
+        </div>
+      </div>
+
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="rememberMe"
+              formControlName="rememberMe"
+              (click)="rememberEmployeLogin($event)"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <div class="alert alert-danger" role="alert" *ngIf="loginWasWrong">
+            {{ alertText }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary w-100 py-2" type="submit">
+            Log in
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
