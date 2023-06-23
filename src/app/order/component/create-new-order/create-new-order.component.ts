@@ -26,13 +26,21 @@ export class CreateNewOrderComponent implements OnInit{
     email:['',Validators.compose([Validators.minLength(3),Validators.maxLength(35),Validators.email,Validators.required])],
     phone:['',Validators.compose([Validators.minLength(6),Validators.maxLength(14),Validators.required])],
     selectEmployee:['',Validators.required],
-    message:['',Validators.maxLength(1000)]
+    message:['',Validators.maxLength(1000)],
+    status:['']
   });
 
   public employeesList:any[] = [];
   public modalText:string = '';
   public isSuccess:boolean = true;
   public orderWrong: boolean = false;
+  public orderStatus = [
+    "Open",
+    "In Progress",
+    "Completed"
+  ]; 
+
+  
 
   ngOnInit(): void {
     this.personalService.getPersonal().subscribe(list => {
@@ -44,6 +52,11 @@ export class CreateNewOrderComponent implements OnInit{
 
   selectEmployee(employee:any){
     this.form.controls.selectEmployee.setValue(employee.target.value);
+  }
+
+  selectStatus(status:any){
+    this.form.controls.status.setValue(status.target.value);
+
   }
 
   /**

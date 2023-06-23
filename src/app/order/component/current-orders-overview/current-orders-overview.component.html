@@ -15,6 +15,14 @@
           <h3>Current Orders</h3>
         </div>
       </div>
+
+      <div class="row mt-4 mb-4" *ngIf="orderIsEmpty">
+        <div class="col">
+          <div class="alert alert-success" role="alert">
+            All orders are now complete. We wish you a nice evening
+          </div>
+        </div>
+      </div>
       <div class="list-group" *ngFor="let order of orderList">
         <a
           class="list-group-item bg-dark text-light list-group-item-action"
@@ -23,7 +31,7 @@
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ order.title }}</h5>
             <small>
-              <strong>{{ order.orderDate }}</strong>
+              <strong>Date: {{ order.orderDate | date : "dd.MM.YYYY" }}</strong>
             </small>
           </div>
           <p class="mb-1">
@@ -43,6 +51,10 @@
             ><strong
               >Selected employee: {{ order.selectEmployee }}</strong
             ></small
+          >
+          <br />
+          <small
+            ><strong>Status: {{ order.status }}</strong></small
           >
         </a>
       </div>

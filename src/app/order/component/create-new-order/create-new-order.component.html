@@ -130,6 +130,21 @@
         </option>
       </select>
     </div>
+
+    <div class="col">
+      <label class="form-label">Order Status</label>
+      <select
+        class="form-control"
+        name="status"
+        formControlName="status"
+        (change)="selectStatus($event)"
+      >
+        <option>--Status--</option>
+        <option *ngFor="let status of orderStatus">
+          {{ status }}
+        </option>
+      </select>
+    </div>
   </div>
 
   <div class="row mt-4">

@@ -13,8 +13,20 @@ export class EmployeeComponent implements OnInit{
   }
 
   public orderedList:any[] = [];
+  public orderStatus = [
+    "Open",
+    "In Progress",
+    "Completed"
+  ]; 
+
+  obj = {
+    name: 'first'
+  }
 
   ngOnInit(): void {
+
+    console.log(this.obj);
+    
     this.orderService.getOrdersList().subscribe((employeeOrderList) => {
       employeeOrderList.map((data:any) => {
         this.orderedList.push(data);
@@ -30,13 +42,19 @@ export class EmployeeComponent implements OnInit{
               if(findWithNameEmployeeToOrdered){
                 this.orderedList = [];
                 this.orderedList.push(findWithNameEmployeeToOrdered);
-                console.log(this.orderedList,'seine aufträge');   
+                
+                // console.log(this.orderedList,'seine aufträge');   
               }
             }
           }); 
         }
       });
     });
+  }
+
+  selectedOrderStatus($event:any){
+    console.log($event.target.value);
+
   }
 
 }
