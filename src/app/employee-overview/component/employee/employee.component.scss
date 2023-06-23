@@ -4,12 +4,26 @@
     background-color: var(--bgc);
     color: var(--textColor);
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-between;
+    
 
     .box{
-        width: 70%;
-        height: 500px;
-        background-color: brown;
+        width: 90%;
+        min-height: 70vh;
+        margin-top: 11.3rem;
+        display: flex;
+        justify-content: center;
+        .list-group{
+            width: 70%;
+
+            @media(max-width: 820px){
+                width: 95%;
+            }
+            @media(max-width: 530px){
+                width: 99%;
+            }
+        }
     }
+
 
 }

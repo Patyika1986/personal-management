@@ -30,9 +30,7 @@
         >
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ order.title }}</h5>
-            <small>
-              <strong>Date: {{ order.orderDate | date : "dd.MM.YYYY" }}</strong>
-            </small>
+            <small> Date: {{ order.orderDate | date : "dd.MM.YYYY" }} </small>
           </div>
           <p class="mb-1">
             <strong>Customername: {{ order.customerName }}</strong>

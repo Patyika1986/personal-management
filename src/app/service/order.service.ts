@@ -29,4 +29,16 @@ export class OrderService {
       })
     );
   }
+
+  updateOrder(id: any, item: any): Observable<any> {
+    const data = this.http.put(
+      'https://personal-management-1293e-default-rtdb.firebaseio.com/orderList/' +
+        id +
+        '.json',
+      item
+    );
+    console.log(data, 'data from service');
+
+    return data;
+  }
 }

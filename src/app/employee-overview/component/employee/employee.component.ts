@@ -19,13 +19,9 @@ export class EmployeeComponent implements OnInit{
     "Completed"
   ]; 
 
-  obj = {
-    name: 'first'
-  }
-
   ngOnInit(): void {
 
-    console.log(this.obj);
+
     
     this.orderService.getOrdersList().subscribe((employeeOrderList) => {
       employeeOrderList.map((data:any) => {
@@ -43,7 +39,7 @@ export class EmployeeComponent implements OnInit{
                 this.orderedList = [];
                 this.orderedList.push(findWithNameEmployeeToOrdered);
                 
-                // console.log(this.orderedList,'seine aufträge');   
+               console.log(this.orderedList,'seine aufträge');   
               }
             }
           }); 
@@ -54,7 +50,13 @@ export class EmployeeComponent implements OnInit{
 
   selectedOrderStatus($event:any){
     console.log($event.target.value);
-
+    this.orderedList.map((data) => {
+      data.status = $event.target.value;
+      console.log(data);
+      this.orderService.updateOrder(data.id,data).subscribe(list => {
+        list.status = $event.target.value;
+      });
+    });
   }
 
 }

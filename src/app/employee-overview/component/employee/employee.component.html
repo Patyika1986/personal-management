@@ -1,15 +1,107 @@
 <div class="cont">
+  <div
+    class="d-flex flex-column flex-shrink-0 bg-body-tertiary"
+    style="width: 4.5rem"
+  >
+    <!-- <a
+    href="/"
+    class="d-block p-3 link-body-emphasis text-decoration-none"
+    data-bs-toggle="tooltip"
+    data-bs-placement="right"
+    data-bs-original-title="Icon-only"
+  >
+    <svg class="bi pe-none" width="40" height="32">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="visually-hidden">Icon-only</span>
+  </a> -->
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item">
+        <a
+          routerLink="/employee"
+          class="nav-link active py-3 border-bottom rounded-0"
+          aria-current="page"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          aria-label="Home"
+          data-bs-original-title="Home"
+        >
+          <span class="material-symbols-outlined"> home </span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard-overview"
+          class="nav-link py-3 border-bottom rounded-0"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          aria-label="Dashboard"
+          data-bs-original-title="Dashboard"
+        >
+          <span class="material-symbols-outlined"> dashboard </span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="nav-link py-3 border-bottom rounded-0"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          aria-label="Orders"
+          data-bs-original-title="Orders"
+        >
+          <span class="material-symbols-outlined"> list_alt </span>
+        </a>
+      </li>
+    </ul>
+    <div class="dropdown border-top">
+      <a
+        href="#"
+        class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://github.com/mdo.png"
+          alt="mdo"
+          width="24"
+          height="24"
+          class="rounded-circle"
+        />
+      </a>
+      <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="box">
-    <div class="list-group">
-      <a class="list-group-item list-group-item-action" aria-current="true">
+    <div class="list-group mt-2 mb-2" *ngFor="let order of orderedList">
+      <a
+        class="list-group-item list-group-item-action bg-dark text-light border-0"
+        aria-current="true"
+      >
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">List group item heading</h5>
-          <small>3 days ago</small>
+          <h5 class="mb-1">Customername: {{ order.customerName }}</h5>
+          <small>Date: {{ order.orderDate | date : "dd.MM.yyyy" }} </small>
         </div>
-        <p class="mb-1">Some placeholder content in a paragraph.</p>
-        <small>And some small print.</small>
+        <p class="mb-1">Street: {{ order.street }}</p>
+        <p class="mb-1">Housnumber: {{ order.housNumber }}</p>
+        <p class="mb-1">Zipcode: {{ order.zipCode }}</p>
+        <p class="mb-1">City: {{ order.city }}</p>
+        <p class="mb-1">Phone: {{ order.phone }}</p>
+        <p class="mb-1">E-Mail: {{ order.email }}</p>
+        <hr />
+        <p class="mb-1">Description: {{ order.orderDescription }}</p>
+        <p class="mb-1">Message: {{ order.message }}</p>
+        <small
+          ><strong>Selected employee: {{ order.selectEmployee }}</strong></small
+        >
+        <br />
+        <small
+          ><strong>Status: {{ order.status }}</strong></small
+        >
         <select
-          class="form-select"
+          class="form-select mt-3"
           aria-label="Default select example"
           (change)="selectedOrderStatus($event)"
         >
