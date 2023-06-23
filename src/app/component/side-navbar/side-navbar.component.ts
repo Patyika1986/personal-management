@@ -1,16 +1,30 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-side-navbar',
   templateUrl: './side-navbar.component.html',
-  styleUrls: ['./side-navbar.component.scss']
+  styleUrls: ['./side-navbar.component.scss'],
 })
 export class SideNavbarComponent {
-  constructor(private router:Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   private expand: boolean = false;
   public darkMode: boolean = false;
+
+  isEmployeeLogd() {
+    const isLoged = localStorage.getItem('employeeIsLogd')!;
+    const jsonLoged = JSON.parse(isLoged);
+
+    if (isNaN(jsonLoged)) {
+      if (jsonLoged.rememberMe) {
+        this.router.navigate(['employee']);
+        return;
+      }
+    }
+    this.router.navigate(['login']);
+  }
 
   expandAside() {
     this.expand = !this.expand;
@@ -44,7 +58,4 @@ export class SideNavbarComponent {
       this.darkMode ? 'dark' : 'light'
     );
   }
-
-
-
 }

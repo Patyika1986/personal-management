@@ -18,6 +18,7 @@ import { CreateNewOrderComponent } from './order/component/create-new-order/crea
 import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
 import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
 import { LoginComponent } from './login/component/login/login.component';
+import { EmployeeComponent } from './employee-overview/component/employee/employee.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LoginComponent } from './login/component/login/login.component';
     OrderOverviewComponent,
     CreateNewOrderComponent,
     CurrentOrdersOverviewComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

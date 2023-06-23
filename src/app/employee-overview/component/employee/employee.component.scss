@@ -1,0 +1,15 @@
+.cont{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bgc);
+    color: var(--textColor);
+    display: flex;
+    justify-content: space-around;
+
+    .box{
+        width: 60%;
+        height: 500px;
+        background-color: brown;
+    }
+
+}
