@@ -47,8 +47,6 @@ export class EmployeeComponent implements OnInit{
               if(findWithNameEmployeeToOrdered){
                 this.orderedList = [];
                 this.orderedList.push(findWithNameEmployeeToOrdered);
-                
-               console.log(this.orderedList,'seine aufträge');   
               }
             }
           }); 

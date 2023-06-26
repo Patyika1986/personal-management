@@ -68,20 +68,21 @@
 
   <div class="row mt-3">
     <div class="col">
-      <div class="card">
+      <div class="card" routerLink="/employee-time" routerLinkActive="active">
         <div class="card-body">
-          <h5>Monthly chart overview</h5>
-          <div class="chart">
-            <div class="first"></div>
-            <div class="second"></div>
-            <div class="third"></div>
-            <div class="fourth"></div>
-            <div class="fifth"></div>
-            <div class="six"></div>
-            <div class="seven"></div>
-            <div class="eight"></div>
-            <div class="nine"></div>
-            <div class="ten"></div>
+          <h5>Employee time overview</h5>
+          <div class="list-group mt-5">
+            <a
+              class="list-group-item bg-transparent border border-0"
+              aria-current="true"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <!--badge-->
+                <app-badge [badge]="totalTimeBadge"></app-badge>
+              </div>
+              <p class="">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </a>
           </div>
         </div>
       </div>

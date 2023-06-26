@@ -19,6 +19,10 @@ import { OrderOverviewComponent } from './order/component/order-overview/order-o
 import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
 import { LoginComponent } from './login/component/login/login.component';
 import { EmployeeComponent } from './employee-overview/component/employee/employee.component';
+import { EmployeeTimeComponent } from './time-overview/component/employee-time/employee-time.component';
+import { NotificationOfIllnessComponent } from './time-overview/component/notification-of-illness/notification-of-illness.component';
+import { VacationRequestComponent } from './time-overview/component/vacation-request/vacation-request.component';
+import { VacationAndSickOverviewComponent } from './time-overview/component/vacation-and-sick-overview/vacation-and-sick-overview.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { EmployeeComponent } from './employee-overview/component/employee/employ
     CreateNewOrderComponent,
     CurrentOrdersOverviewComponent,
     LoginComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeTimeComponent,
+    NotificationOfIllnessComponent,
+    VacationRequestComponent,
+    VacationAndSickOverviewComponent
   ],
   imports: [
     BrowserModule,

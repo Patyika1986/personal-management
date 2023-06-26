@@ -1,0 +1,128 @@
+<app-side-navbar></app-side-navbar>
+<div class="cont">
+  <div class="box">
+    <div class="content">
+      <div class="header">
+        <h2>Vacation request</h2>
+      </div>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-dark"
+        aria-label="Tenth navbar example"
+      >
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample08"
+            aria-controls="navbarsExample08"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-md-center"
+            id="navbarsExample08"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  routerLink="/employee-time"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/vacation-request"
+                  >Vacation request</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/notification-of-illness"
+                  >Notification of illness</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/vacation-and-sick-overview"
+                  >Vacation and sick overview</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- some content -->
+      <div class="container bg-dark text-light col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img
+              src="{{ img }}"
+              class="d-block mx-lg-auto img-fluid"
+              alt="Bootstrap Themes"
+              width="700"
+              height="500"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-lights lh-1 mb-3">
+              Hello {{ employeeName }} here you can enter your vacation
+            </h1>
+            <p class="lead">
+              You can also apply for your annual leave or just individual days
+              or weeks. We are flexible, so you can also apply for short-term
+              vacation, e.g. 2 weeks earlier. We wish you a nice holiday! The
+              application still has to be approved. Usually within 48 hours you
+              will get a fidbeck! Kind regards your team
+            </p>
+          </div>
+        </div>
+        <!-- form -->
+        <form [formGroup]="form" (ngSubmit)="vacationRequest()">
+          <div class="row">
+            <div class="col mt-1">
+              <label class="form-label">Date from</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Date from"
+                name="dateFrom"
+                formControlName="dateFrom"
+              />
+            </div>
+            <div class="col mt-1">
+              <label class="form-label">Date to</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Date to"
+                name="dateTo"
+                formControlName="dateTo"
+              />
+            </div>
+            <div class="col mt-1">
+              <label class="form-label">Days</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Days"
+                name="days"
+                formControlName="days"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button type="submit" class="btn btn-primary px-4 me-md-2">
+                Apply for
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
