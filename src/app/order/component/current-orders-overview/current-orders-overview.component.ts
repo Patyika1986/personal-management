@@ -12,6 +12,7 @@ export class CurrentOrdersOverviewComponent implements OnInit{
 
   public orderList:any[] = [];
   public orderIsEmpty: boolean = false;
+  public time:string = "0:00";
 
   ngOnInit(): void {
     this.orderService.getOrdersList().subscribe(orders => {

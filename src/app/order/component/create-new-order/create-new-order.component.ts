@@ -27,7 +27,9 @@ export class CreateNewOrderComponent implements OnInit{
     phone:['',Validators.compose([Validators.minLength(6),Validators.maxLength(14),Validators.required])],
     selectEmployee:['',Validators.required],
     message:['',Validators.maxLength(1000)],
-    status:['']
+    status:[''],
+    orderTimeFrom:[''],
+    orderTimeTo:['']
   });
 
   public employeesList:any[] = [];
@@ -40,6 +42,9 @@ export class CreateNewOrderComponent implements OnInit{
     "Completed"
   ]; 
 
+  public orderTimeFrom = [""];
+  public orderTimeTo = [""];
+
   
 
   ngOnInit(): void {
@@ -48,6 +53,17 @@ export class CreateNewOrderComponent implements OnInit{
         this.employeesList.push(data);
       });
     });
+  }
+
+  selectOrderTimeFrom(event:any){
+    this.form.controls.orderTimeFrom.setValue(event.target.value);
+    console.log(event.target.value);
+      
+  }
+  selectOrderTimeTo(event:any){
+    this.form.controls.orderTimeTo.setValue(event.target.value);
+    console.log(event.target.value);
+
   }
 
   selectEmployee(employee:any){
@@ -67,6 +83,7 @@ export class CreateNewOrderComponent implements OnInit{
     if(this.form.status === "VALID"){
       this.orderService.postOrder(this.form.value).subscribe();
       this.modalText = `Order has been saved and assigned to employee: ${this.form.value.selectEmployee}`;
+      this.isSuccess = true;
       console.log(this.form.status);
     }else{
       this.isSuccess = false;

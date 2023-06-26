@@ -141,10 +141,7 @@ export class PersonalOverviewComponent implements OnInit {
       const selectedUser = data.find((user: any) => user.id === id);
 
       if (selectedUser) {
-        //save the id from selected employee
         this.personalService.selectedEmployeeId.set(id);
-
-        // set values from form to data
         this.selectedUser.controls.firstName.setValue(selectedUser.firstName);
         this.selectedUser.controls.lastName.setValue(selectedUser.lastName);
         this.selectedUser.controls.dateOfBirth.setValue(

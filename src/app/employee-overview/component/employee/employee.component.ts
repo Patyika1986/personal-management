@@ -19,6 +19,15 @@ export class EmployeeComponent implements OnInit{
     "Completed"
   ]; 
 
+  public timeStatus = [
+    "0:00",
+    "15:00",
+    "30:00",
+    "45:00",
+    "1:00",
+  ];
+  
+
   ngOnInit(): void {
 
 
@@ -55,6 +64,24 @@ export class EmployeeComponent implements OnInit{
       console.log(data);
       this.orderService.updateOrder(data.id,data).subscribe(list => {
         list.status = $event.target.value;
+      });
+    });
+  }
+
+  selectOrderTimeFrom($event:any){
+    this.orderedList.map((data) => {
+      data.orderTimeFrom = $event.target.value;
+      this.orderService.updateOrder(data.id,data).subscribe(list => {
+        list.orderTimeFrom = $event.target.value;
+      });
+    });
+  }
+
+  selectOrderTimeTo($event:any){
+    this.orderedList.map((data) => {
+      data.orderTimeTo = $event.target.value;
+      this.orderService.updateOrder(data.id,data).subscribe(list => {
+        list.orderTimeTo = $event.target.value;
       });
     });
   }

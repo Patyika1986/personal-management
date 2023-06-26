@@ -124,7 +124,7 @@
         formControlName="selectEmployee"
         (change)="selectEmployee($event)"
       >
-        <option>--Select--</option>
+        <option>--Employee--</option>
         <option *ngFor="let employee of employeesList">
           {{ employee.lastName }}
         </option>
@@ -144,6 +144,29 @@
           {{ status }}
         </option>
       </select>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col">
+      <label class="form-label">Order Time from</label>
+      <input
+        type="time"
+        class="form-control"
+        name="orderTimeFrom"
+        formControlName="orderTimeFrom"
+        (change)="selectOrderTimeFrom($event)"
+      />
+    </div>
+    <div class="col">
+      <label class="form-label">Order Time to</label>
+      <input
+        type="time"
+        class="form-control"
+        name="orderTimeTo"
+        formControlName="orderTimeTo"
+        (change)="selectOrderTimeTo($event)"
+      />
     </div>
   </div>
 
