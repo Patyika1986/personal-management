@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { EmployeeService } from 'src/app/service/employee.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -9,15 +10,22 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class VacationRequestComponent implements OnInit{
 
-  constructor(private personalService: PersonalService, private formBuilder:FormBuilder){}
+  constructor(private personalService: PersonalService,
+     private formBuilder:FormBuilder,
+     private employeeService: EmployeeService){}
 
   public img: string = "";
   public employeeName: string = "";
+  public employeeId: string = "";
   public form = this.formBuilder.group({
-    dateFrom:[''],
-    dateTo:[''],
-    days:['']
+    dateFrom:['',Validators.required],
+    dateTo:['',Validators.required],
+    days:['',Validators.required],
+    name:[''],
+    empId:[''],
+    approved:[false]
   });
+  public vacation:any[] = [];
 
 
   ngOnInit(): void {
@@ -26,14 +34,30 @@ export class VacationRequestComponent implements OnInit{
     this.personalService.getPersonal().subscribe((list) => {
       const result = list.find((emp:any) => emp.email === jsonLogedEmployee.email && emp.id === jsonLogedEmployee.password);
       this.img = result.img;
+      this.employeeId = result.id;
       this.employeeName = `${result.firstName}  ${result.lastName}`;
-      console.log(result);
-      
-    })  
+    }); 
+
+     this.employeeService.getVacationRequest().subscribe((vacation) => {
+      this.vacation = vacation;
+      console.log(vacation,'vacation');
+    });
+    
   }
 
+
+
+
   vacationRequest(){
-    console.log(this.form.value);
+    if(this.form.status === "VALID"){
+      this.form.controls.name.setValue(this.employeeName);
+      this.form.controls.empId.setValue(this.employeeId);
+      this.employeeService.vacationRequest(this.form.value).subscribe();
+      console.log('modal success');
+
+    }else{
+      console.log('modal wrong');
+    }
     
   }
 

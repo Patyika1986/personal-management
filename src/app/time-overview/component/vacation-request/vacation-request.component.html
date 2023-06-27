@@ -122,6 +122,20 @@
             </div>
           </div>
         </form>
+
+        <div class="row mt-3">
+          <div class="col">
+            <label class="form-label">Application approved</label>
+            <div
+              class="alert alert-info fw-bold"
+              role="alert"
+              *ngFor="let vac of vacation"
+            >
+              from: {{ vac.dateFrom }} - to: {{ vac.dateTo }} approved ? :
+              {{ vac.approved ? "Yes" : "No" }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
