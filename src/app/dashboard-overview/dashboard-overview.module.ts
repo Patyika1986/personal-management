@@ -4,11 +4,13 @@ import { DashboardOverviewComponent } from './component/dashboard-overview/dashb
 import { Routes } from '@angular/router';
 import { CardsComponent } from './component/cards/cards.component';
 import { EmployeeRequestsComponent } from './component/employee-requests/employee-requests.component';
+import { AllNotificationOfIllnessComponent } from './component/all-notification-of-illness/all-notification-of-illness.component';
 
 const routes: Routes = [
   { path: '', component: DashboardOverviewComponent },
   { path: '', component: CardsComponent },
   { path: '', component: EmployeeRequestsComponent },
+  { path: '', component: AllNotificationOfIllnessComponent },
 ]
 
 @NgModule({

@@ -35,8 +35,27 @@ export class EmployeeService {
         '.json',
       item
     );
-    console.log(data, 'data from service');
-
     return data;
+  }
+
+
+  // post notification of illness
+  postNotificationOfIllness(employee:any):Observable<any>{
+    const data = this.http.post<any[]>('https://personal-management-1293e-default-rtdb.firebaseio.com/sick.json',employee);
+    return data;
+  }
+
+  getNotificationOfIllness(): Observable<any> {
+    return this.http.get('https://personal-management-1293e-default-rtdb.firebaseio.com/sick.json').pipe(
+      map((res: any) => {
+        const sicks = [];
+        for (const key in res) {
+          if (res.hasOwnProperty(key)) {
+            sicks.push({ ...res[key], id: key });
+          }
+        }
+        return sicks;
+      })
+    );
   }
 }

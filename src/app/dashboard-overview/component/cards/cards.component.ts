@@ -20,10 +20,12 @@ export class CardsComponent implements OnInit{
   public currentPersonalLength: number = 0;
   public currentOrderLength: number = 0;
   public requestsLength:number = 0;
+  public sickNotificationLength:number = 0;
 
   ngOnInit(): void {
 
-    this.employeeService.getVacationRequest().subscribe(req => this.requestsLength = req.length)
+    this.employeeService.getVacationRequest().subscribe(req => this.requestsLength = req.length);
+    this.employeeService.getNotificationOfIllness().subscribe(list => this.sickNotificationLength = list.length);
     
     this.personalService.getPersonal().subscribe(list => {
       this.currentPersonalLength = list.length;      

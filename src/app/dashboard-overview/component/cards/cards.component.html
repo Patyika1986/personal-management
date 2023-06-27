@@ -94,7 +94,7 @@
         routerLinkActive="active"
       >
         <div class="card-body">
-          <h5>Employee requests overview</h5>
+          <h5>Employee vacation requests overview</h5>
           <div class="list-group mt-5">
             <a
               class="list-group-item bg-transparent border border-0"
@@ -128,6 +128,30 @@
             >
               <div class="d-flex w-100 justify-content-between">
                 <app-badge [badge]="currentOrderLength"></app-badge>
+              </div>
+              <p class="">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div
+        class="card"
+        routerLink="/all-notification-of-illness"
+        routerLinkActive="active"
+      >
+        <div class="card-body">
+          <h5>Notification of illness</h5>
+          <div class="list-group mt-5">
+            <a
+              class="list-group-item bg-transparent border border-0"
+              aria-current="true"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <!--badge-->
+                <app-badge [badge]="sickNotificationLength"></app-badge>
               </div>
               <p class="">Some placeholder content in a paragraph.</p>
               <small>And some small print.</small>
