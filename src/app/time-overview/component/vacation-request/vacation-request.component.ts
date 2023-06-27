@@ -23,7 +23,8 @@ export class VacationRequestComponent implements OnInit{
     days:['',Validators.required],
     name:[''],
     empId:[''],
-    approved:[false]
+    approved:[''],
+    applicationDate:[new Date()]
   });
   public vacation:any[] = [];
 
@@ -52,6 +53,7 @@ export class VacationRequestComponent implements OnInit{
     if(this.form.status === "VALID"){
       this.form.controls.name.setValue(this.employeeName);
       this.form.controls.empId.setValue(this.employeeId);
+      this.form.controls.approved.setValue('In Progress');
       this.employeeService.vacationRequest(this.form.value).subscribe();
       console.log('modal success');
 

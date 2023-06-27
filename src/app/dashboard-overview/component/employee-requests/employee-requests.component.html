@@ -1,0 +1,58 @@
+<app-side-navbar></app-side-navbar>
+<div class="cont">
+  <div class="box">
+    <div class="content">
+      <div class="header">
+        <div class="bg-dark text-secondary px-4 py-5 text-center">
+          <div class="py-5">
+            <h1 class="display-5 fw-bold text-white">Employee Requests</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="fs-5 mb-4">
+                Here you will find all vacation requests from all employees as
+                well as sick leave. And you can also react to it from here, e.g.
+                Holidays must be approved by you. And look at sick notes.
+              </p>
+              <!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button
+                  type="button"
+                  class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"
+                >
+                  Custom button
+                </button>
+                <button type="button" class="btn btn-outline-light btn-lg px-4">
+                  Secondary
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--kalendar-->
+      <div class="row">
+        <div class="col">
+          <div
+            class="bg-dark vacation text-light p-5 mt-3"
+            *ngFor="let req of requestList"
+          >
+            <h1>Name: {{ req.name }}</h1>
+            <p>
+              Application date: {{ req.applicationDate | date : "dd.MM.yyyy" }}
+            </p>
+            <p>Date from: {{ req.dateFrom | date : "dd.MM.yyyy" }}</p>
+            <p>Date to: {{ req.dateTo | date : "dd.MM.yyyy" }}</p>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              (change)="selectVacationRequestAnswer($event, req)"
+            >
+              <option>-- select answer --</option>
+              <option *ngFor="let request of vacationRequestAnswer">
+                {{ request }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

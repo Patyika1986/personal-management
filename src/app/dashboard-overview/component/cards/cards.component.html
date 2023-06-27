@@ -35,7 +35,7 @@
             >
               <div class="d-flex w-100 justify-content-between">
                 <!--badge-->
-                <app-badge [badge]="totalTimeBadge"></app-badge>
+                <app-badge [badge]="0"></app-badge>
               </div>
               <p class="">Some placeholder content in a paragraph.</p>
               <small>And some small print.</small>
@@ -78,7 +78,7 @@
             >
               <div class="d-flex w-100 justify-content-between">
                 <!--badge-->
-                <app-badge [badge]="totalTimeBadge"></app-badge>
+                <app-badge [badge]="0"></app-badge>
               </div>
               <p class="">Some placeholder content in a paragraph.</p>
               <small>And some small print.</small>
@@ -88,13 +88,25 @@
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div
+        class="card"
+        routerLink="/employee-requests-overview"
+        routerLinkActive="active"
+      >
         <div class="card-body">
-          <h5>Annual chart overview</h5>
-          <div class="charts">
-            <div class="first1"></div>
-            <div class="second2"></div>
-            <div class="third3"></div>
+          <h5>Employee requests overview</h5>
+          <div class="list-group mt-5">
+            <a
+              class="list-group-item bg-transparent border border-0"
+              aria-current="true"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <!--badge-->
+                <app-badge [badge]="requestsLength"></app-badge>
+              </div>
+              <p class="">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </a>
           </div>
         </div>
       </div>

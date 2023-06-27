@@ -1,0 +1,37 @@
+.cont{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bgc);
+    color: var(--textColor);
+    // display: flex;
+    // justify-content: space-between;
+    
+
+    .box{
+        width: 100%;
+        min-height: 70vh;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        // align-items: center;
+        // border: 5px solid gray;
+
+        .content{
+            width: 70%;
+            height: 1000px;
+            margin-left: clamp(5rem, 8rem, 3rem);
+            // border: 1px solid red;
+            .header{
+                margin-top: 2rem;
+                border: 5px solid var(--mat-blue);
+            }
+
+            .vacation{
+                border: 5px solid var(--mat-blue);
+            }
+        }
+
+    }
+
+
+}

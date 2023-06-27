@@ -12,6 +12,7 @@ import { EmployeeTimeComponent } from './time-overview/component/employee-time/e
 import { VacationRequestComponent } from './time-overview/component/vacation-request/vacation-request.component';
 import { NotificationOfIllnessComponent } from './time-overview/component/notification-of-illness/notification-of-illness.component';
 import { VacationAndSickOverviewComponent } from './time-overview/component/vacation-and-sick-overview/vacation-and-sick-overview.component';
+import { EmployeeRequestsComponent } from './dashboard-overview/component/employee-requests/employee-requests.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'vacation-request', component: VacationRequestComponent },
   { path: 'notification-of-illness', component: NotificationOfIllnessComponent },
   { path: 'vacation-and-sick-overview', component: VacationAndSickOverviewComponent },
+  { path: 'employee-requests-overview', component: EmployeeRequestsComponent },
   { path: '', redirectTo: 'dashboard-overview', pathMatch: 'full' }
 ];
 

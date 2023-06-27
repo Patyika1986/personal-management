@@ -33,39 +33,6 @@
                 text-decoration: underline;
               }
             }
-
-            .charts{
-                width: 135px;
-                height: 135px;
-                margin: auto;
-                border-radius: 50%;
-                overflow: hidden;
-
-                .first1{
-                    height: 100%;
-                    border-bottom: 67px solid rgb(0, 255, 0);
-                    transform: rotate(90deg);
-                    margin-bottom: 1rem;
-                    position: relative;
-                    z-index: 1;
-                }
-                .second2{
-                    height: 100%;
-                    position: relative;
-                    bottom: 10.5rem;
-                    left: 2.7rem;
-                    border-bottom: 71px solid #ff00ee;
-                    transform: rotate(140deg);
-                }
-                .third3{
-                    height: 100%;
-                    position: relative;
-                    bottom: 15.8rem;
-                    left: 4.5rem;
-                    border-bottom: 65px solid #00b3ff;
-                    transform: rotate(120deg);
-                }
-            }
           }
         }
       }

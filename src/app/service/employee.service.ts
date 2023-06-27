@@ -27,4 +27,16 @@ export class EmployeeService {
       })
     );
   }
+
+  updateVacationRequest(id: any, item: any): Observable<any> {
+    const data = this.http.patch(
+      'https://personal-management-1293e-default-rtdb.firebaseio.com/vacation/' +
+        id +
+        '.json',
+      item
+    );
+    console.log(data, 'data from service');
+
+    return data;
+  }
 }
