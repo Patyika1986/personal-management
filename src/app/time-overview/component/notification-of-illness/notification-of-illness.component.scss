@@ -11,23 +11,16 @@
     justify-content: center;
 
     .content {
-      width: 60%;
+      width: 75%;
       margin-top: 2rem;
 
-      @media (max-width: 600px) {
-        width: 70%;
-      }
-      @media (max-width: 500px) {
-        margin-left: clamp(4rem, 8rem, 1rem);
-      }
-      @media (max-width: 420px) {
-        width: 80%;
-        margin-left: clamp(10rem, 12rem, 4rem);
+      @media (max-width: 920px) {
+        width: 100%;
       }
 
       .header {
         padding: 1rem;
-        border: 1px solid gray;
+        text-align: center;
       }
     }
   }
