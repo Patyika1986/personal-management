@@ -7,10 +7,13 @@
     justify-content: space-around;
 
     .box{
-        width: 60%;
+        width: 65%;
         display: flex;
         justify-content: center;
         // border: 1px solid black;
+        @media(max-width: 820px){
+            width: 100%;
+        }
     }
 
     .orders{

@@ -1,6 +1,12 @@
-<app-side-navbar></app-side-navbar>
+<!-- <app-side-navbar></app-side-navbar> -->
 <div class="cont">
   <div class="boxes">
+    <h1 class="mb-3">
+      <span class="material-symbols-outlined" routerLink="/dashboard-overview">
+        arrow_back
+      </span>
+      Employees Overview
+    </h1>
     <div class="edit-form" *ngIf="openEditForm">
       <app-add-personal
         [form]="selectedUser"
