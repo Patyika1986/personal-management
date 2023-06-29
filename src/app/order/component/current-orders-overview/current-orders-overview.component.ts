@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderApiService } from 'src/app/service/orderApi.service';
+
 
 @Component({
   selector: 'app-current-orders-overview',
@@ -8,14 +9,14 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class CurrentOrdersOverviewComponent implements OnInit{
 
-  constructor(private orderService: OrderService){}
+  constructor(private orderApiService: OrderApiService){}
 
   public orderList:any[] = [];
   public orderIsEmpty: boolean = false;
   public time:string = "0:00";
 
   ngOnInit(): void {
-    this.orderService.getOrdersList().subscribe(orders => {
+    this.orderApiService.getOrdersList().subscribe(orders => {
       orders.map((dataList:any) => {
         this.orderList.push(dataList)
         console.log(this.orderList);

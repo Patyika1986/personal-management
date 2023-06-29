@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderApiService } from 'src/app/service/orderApi.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class EmployeeComponent implements OnInit{
 
-  constructor(private orderService:OrderService,private personalService: PersonalService){
+  constructor(private orderApiService:OrderApiService,private personalService: PersonalService){
   }
 
   public orderedList:any[] = [];
@@ -32,7 +32,7 @@ export class EmployeeComponent implements OnInit{
 
 
     
-    this.orderService.getOrdersList().subscribe((employeeOrderList) => {
+    this.orderApiService.getOrdersList().subscribe((employeeOrderList) => {
       employeeOrderList.map((data:any) => {
         this.orderedList.push(data);
 
@@ -60,7 +60,7 @@ export class EmployeeComponent implements OnInit{
     this.orderedList.map((data) => {
       data.status = $event.target.value;
       console.log(data);
-      this.orderService.updateOrder(data.id,data).subscribe(list => {
+      this.orderApiService.updateOrder(data.id,data).subscribe(list => {
         list.status = $event.target.value;
       });
     });
@@ -69,7 +69,7 @@ export class EmployeeComponent implements OnInit{
   selectOrderTimeFrom($event:any){
     this.orderedList.map((data) => {
       data.orderTimeFrom = $event.target.value;
-      this.orderService.updateOrder(data.id,data).subscribe(list => {
+      this.orderApiService.updateOrder(data.id,data).subscribe(list => {
         list.orderTimeFrom = $event.target.value;
       });
     });
@@ -78,7 +78,7 @@ export class EmployeeComponent implements OnInit{
   selectOrderTimeTo($event:any){
     this.orderedList.map((data) => {
       data.orderTimeTo = $event.target.value;
-      this.orderService.updateOrder(data.id,data).subscribe(list => {
+      this.orderApiService.updateOrder(data.id,data).subscribe(list => {
         list.orderTimeTo = $event.target.value;
       });
     });

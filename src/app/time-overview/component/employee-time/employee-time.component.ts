@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderApiService } from 'src/app/service/orderApi.service';
+
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class EmployeeTimeComponent implements OnInit {
   constructor(
-    private orderService: OrderService,
+    private orderApiService: OrderApiService,
     private personalService: PersonalService
   ) {}
 
@@ -23,7 +24,7 @@ export class EmployeeTimeComponent implements OnInit {
 
     if (isNaN(jsonLogedEmployee)) {
       this.personalService.getPersonal().subscribe((personalList) => {
-        this.orderService.getOrdersList().subscribe((orderedList) => {
+        this.orderApiService.getOrdersList().subscribe((orderedList) => {
           for (const personals of personalList) {
             const result = orderedList.find(
               (ordered: any) =>

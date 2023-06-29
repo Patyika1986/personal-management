@@ -8,13 +8,20 @@
 
     .row {
       margin-left: 5rem;
+      @media(max-width: 1200px){
+        flex-direction: column;
+      }
 
-      @media(max-width:902px){flex-wrap: wrap;; margin: 1rem 5rem;}
+      @media(max-width:902px){flex-wrap: wrap; }
       @media(max-width: 685px){
         margin-left: .5rem;
       }
       @media(max-width:472px){width: 90%; margin-left: 2.2rem;}
       .col {
+        padding: .5rem;
+        @media(max-width: 1200px){
+          margin: .5rem 0;
+        }
         @media(max-width:902px){margin: .3rem 0;}
 
           

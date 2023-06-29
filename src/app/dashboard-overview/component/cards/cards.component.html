@@ -8,7 +8,7 @@
       >
         <div class="card-body">
           <h5 class="text-break">Personalmanagement</h5>
-          <div class="list-group mt-5">
+          <div class="list-group mt-5 pb-4">
             <a
               class="list-group-item bg-transparent border border-0"
               aria-current="true"
@@ -17,28 +17,32 @@
                 <!--badge-->
                 <app-badge [badge]="currentPersonalLength"></app-badge>
               </div>
-              <p class="">Total number of staff.</p>
-              <small>And some small print.</small>
+              <!-- <p>Total number of staff.</p> -->
+              <small>Here you can edit or delete employees here</small>
             </a>
           </div>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" routerLink="/order-overview" routerLinkActive="active">
+      <div
+        class="card pb-1"
+        routerLink="/order-overview"
+        routerLinkActive="active"
+      >
         <div class="card-body">
           <h5>Create new order</h5>
-          <div class="list-group mt-5">
+          <div class="list-group mt-5 pb-2">
             <a
               class="list-group-item bg-transparent border border-0"
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
                 <!--badge-->
-                <app-badge [badge]="0"></app-badge>
+                <p></p>
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <p class="">Create an order and then assign employees</p>
+              <!-- <small>And some small print.</small> -->
             </a>
           </div>
         </div>
@@ -48,17 +52,17 @@
       <div class="card" routerLink="/add-new-employe" routerLinkActive="active">
         <div class="card-body">
           <h5>Add new Employes</h5>
-          <div class="list-group mt-5">
+          <div class="list-group mt-5 pb-5">
             <a
               class="list-group-item bg-transparent border border-0"
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
                 <!--badge-->
-                <app-badge [badge]="employeeLength"></app-badge>
+                <!-- <app-badge [badge]="employeeLength"></app-badge> -->
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <!-- <p class="">Some placeholder content in a paragraph.</p> -->
+              <small>Create a new employee here.</small>
             </a>
           </div>
         </div>
@@ -66,7 +70,7 @@
     </div>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-1">
     <div class="col">
       <div class="card" routerLink="/employee-time" routerLinkActive="active">
         <div class="card-body">
@@ -112,7 +116,7 @@
       </div>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-1">
     <div class="col">
       <div
         class="card"

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/service/employee.service';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderApiService } from 'src/app/service/orderApi.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 export class CardsComponent implements OnInit{
 
   constructor(private router: Router, private personalService: PersonalService,
-    private orderService: OrderService,
+    private orderApiService: OrderApiService,
     private employeeService: EmployeeService){}
 
   public currentOrdersBadge:number = 0;
@@ -31,7 +31,7 @@ export class CardsComponent implements OnInit{
       this.currentPersonalLength = list.length;      
     });
 
-    this.orderService.getOrdersList().subscribe(list => {
+    this.orderApiService.getOrdersList().subscribe(list => {
       this.currentOrderLength = list.length;
     })
   }

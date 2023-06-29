@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderApiService } from 'src/app/service/orderApi.service';
 import { PersonalService } from 'src/app/service/personal/personal.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class CreateNewOrderComponent implements OnInit{
 
   constructor(private formBuilder:FormBuilder,
     private personalService: PersonalService,
-    private orderService: OrderService){}
+    private orderApiService: OrderApiService){}
 
   public form = this.formBuilder.group({
     customerName:['',Validators.compose([Validators.minLength(3),Validators.maxLength(25),Validators.required])],
@@ -81,7 +81,7 @@ export class CreateNewOrderComponent implements OnInit{
    */
   saveOrder(){
     if(this.form.status === "VALID"){
-      this.orderService.postOrder(this.form.value).subscribe();
+      this.orderApiService.postOrder(this.form.value).subscribe();
       this.modalText = `Order has been saved and assigned to employee: ${this.form.value.selectEmployee}`;
       this.isSuccess = true;
       console.log(this.form.status);
