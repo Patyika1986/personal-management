@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderApiService } from 'src/app/service/orderApi.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-employee',
@@ -9,7 +9,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class EmployeeComponent implements OnInit{
 
-  constructor(private orderApiService:OrderApiService,private personalService: PersonalService){
+  constructor(private orderApiService:OrderApiService,private personalService: PersonalApiService){
   }
 
   public orderedList:any[] = [];

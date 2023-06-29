@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CountryCityService } from 'src/app/service/country-city.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-add-personal',
@@ -11,7 +11,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 export class AddPersonalComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
-    public personalServiace: PersonalService,
+    public personalApiServiace: PersonalApiService,
     public countryCityServices: CountryCityService
   ) {}
 
@@ -130,17 +130,17 @@ export class AddPersonalComponent implements OnInit {
   }
 
   saveChanges(form: any) {
-    this.personalServiace.getPersonal().subscribe((personalList) => {
+    this.personalApiServiace.getPersonal().subscribe((personalList) => {
       const result = personalList.find(
         (person: any) =>
-          person.id === this.personalServiace.selectedEmployeeId()
+          person.id === this.personalApiServiace.selectedEmployeeId()
       );
 
       if (result) {
-        this.personalServiace
+        this.personalApiServiace
           .postPersonal(
             this.form.value,
-            this.personalServiace.selectedEmployeeId()
+            this.personalApiServiace.selectedEmployeeId()
           )
           .subscribe((list) => {
             this.imageUrl = list.img;

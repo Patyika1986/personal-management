@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CountryCityService } from 'src/app/service/country-city.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-add-new-employees',
@@ -10,7 +10,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class AddNewEmployeesComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
-    private personalService: PersonalService,
+    private personalApiService: PersonalApiService,
     private countryCityServices: CountryCityService){}
 
   public red:string = 'red';
@@ -75,7 +75,7 @@ export class AddNewEmployeesComponent implements OnInit{
     this.form.value.country = this.selectedCountry;
 
     if(this.form.status === "VALID"){
-      this.personalService.addPersonal(this.form.value).subscribe(() => {
+      this.personalApiService.addPersonal(this.form.value).subscribe(() => {
         this.modalText = 'Add new employee was successfuly';
       });      
     }else{

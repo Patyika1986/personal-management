@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/service/employee.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-vacation-request',
@@ -10,7 +10,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class VacationRequestComponent implements OnInit{
 
-  constructor(private personalService: PersonalService,
+  constructor(private personalApiService: PersonalApiService,
      private formBuilder:FormBuilder,
      private employeeService: EmployeeService){}
 
@@ -32,7 +32,7 @@ export class VacationRequestComponent implements OnInit{
   ngOnInit(): void {
     const logedEmployee = localStorage.getItem('employeeIsLogd')!;
     const jsonLogedEmployee = JSON.parse(logedEmployee);
-    this.personalService.getPersonal().subscribe((list) => {
+    this.personalApiService.getPersonal().subscribe((list) => {
       const result = list.find((emp:any) => emp.email === jsonLogedEmployee.email && emp.id === jsonLogedEmployee.password);
       this.img = result.img;
       this.employeeId = result.id;

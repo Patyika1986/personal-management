@@ -6,7 +6,7 @@ import { Personals } from 'src/app/Personal-Module/personals';
 @Injectable({
   providedIn: 'root',
 })
-export class PersonalService {
+export class PersonalApiService {
   constructor(private http: HttpClient) {}
 
   selectedEmployeeId = signal('');

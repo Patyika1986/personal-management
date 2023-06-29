@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LoginService } from 'src/app/service/login.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class LoginComponent {
   constructor(
-    private personalService: PersonalService,
+    private personalService: PersonalApiService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router

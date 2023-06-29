@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/service/employee.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-notification-of-illness',
@@ -12,7 +12,7 @@ export class NotificationOfIllnessComponent {
 
   constructor(private formBuilder:FormBuilder,
     private employeeService: EmployeeService,
-    private personalService: PersonalService){}
+    private personalApiService: PersonalApiService){}
 
   public form = this.formBuilder.group({
     sickFrom: ['',Validators.required],
@@ -26,7 +26,7 @@ export class NotificationOfIllnessComponent {
     const logedEmployee = localStorage.getItem('employeeIsLogd')!;
     const jsonLogedEmployee = JSON.parse(logedEmployee);
 
-    this.personalService.getPersonal().subscribe(employeeList => {
+    this.personalApiService.getPersonal().subscribe(employeeList => {
       const result = employeeList.find((emp:any) => emp.id === jsonLogedEmployee.password);
       this.form.controls.empId.setValue(result.id);
       let name = `${result.firstName} ${result.lastName}`;

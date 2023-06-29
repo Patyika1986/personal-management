@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OrderApiService } from 'src/app/service/orderApi.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-create-new-order',
@@ -11,7 +11,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 export class CreateNewOrderComponent implements OnInit{
 
   constructor(private formBuilder:FormBuilder,
-    private personalService: PersonalService,
+    private personalService: PersonalApiService,
     private orderApiService: OrderApiService){}
 
   public form = this.formBuilder.group({

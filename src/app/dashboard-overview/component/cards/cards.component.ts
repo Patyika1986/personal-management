@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { OrderApiService } from 'src/app/service/orderApi.service';
-import { PersonalService } from 'src/app/service/personal/personal.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-cards',
@@ -11,7 +11,7 @@ import { PersonalService } from 'src/app/service/personal/personal.service';
 })
 export class CardsComponent implements OnInit{
 
-  constructor(private router: Router, private personalService: PersonalService,
+  constructor(private router: Router, private personalService: PersonalApiService,
     private orderApiService: OrderApiService,
     private employeeService: EmployeeService){}
 

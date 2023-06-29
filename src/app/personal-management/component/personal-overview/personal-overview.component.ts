@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Personals } from 'src/app/Personal-Module/personals';
 import { PersonalModule } from 'src/app/service/personal/personal.module';
-import { PersonalService } from 'src/app/service/personal/personal.service';
 import { CountryCityService } from 'src/app/service/country-city.service';
+import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-personal-overview',
@@ -12,7 +12,7 @@ import { CountryCityService } from 'src/app/service/country-city.service';
 })
 export class PersonalOverviewComponent implements OnInit {
   constructor(
-    private personalService: PersonalService,
+    private personalApiService: PersonalApiService,
     public formBuilder: FormBuilder,
     public countryCityServices: CountryCityService
   ) {}
@@ -100,7 +100,7 @@ export class PersonalOverviewComponent implements OnInit {
   public imageUrl: any = '';
 
   ngOnInit(): void {
-    this.personalService.getPersonal().subscribe((list) => {
+    this.personalApiService.getPersonal().subscribe((list) => {
       list.map((data: any) => {
         this.selectedUser.controls.id.setValue(data.id);
         this.imageUrl = data.img;
@@ -137,11 +137,11 @@ export class PersonalOverviewComponent implements OnInit {
    */
   editPersonal(id: string) {
     this.openEditForm = true;
-    this.personalService.getPersonal().subscribe((data) => {
+    this.personalApiService.getPersonal().subscribe((data) => {
       const selectedUser = data.find((user: any) => user.id === id);
 
       if (selectedUser) {
-        this.personalService.selectedEmployeeId.set(id);
+        this.personalApiService.selectedEmployeeId.set(id);
         this.selectedUser.controls.firstName.setValue(selectedUser.firstName);
         this.selectedUser.controls.lastName.setValue(selectedUser.lastName);
         this.selectedUser.controls.dateOfBirth.setValue(
@@ -178,7 +178,7 @@ export class PersonalOverviewComponent implements OnInit {
     const result = this.personals.find(person => person.id === id);
     if(result){
       this.openEditForm = false;
-      this.personalService.deletePersonal(id).subscribe();
+      this.personalApiService.deletePersonal(id).subscribe();
       this.personals.find(personal => personal.id === id)
       const index = this.personals.indexOf(result);
       this.personals.splice(index,1);
