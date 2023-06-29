@@ -12,7 +12,6 @@ import { AddPersonalComponent } from './personal-management/component/add-person
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddNewEmployeesComponent } from './add-new-employees/component/add-new-employees/add-new-employees.component';
-import { ResetButtonComponent } from './component/reset-button/reset-button.component';
 import { CreateNewOrderComponent } from './order/component/create-new-order/create-new-order.component';
 import { OrderOverviewComponent } from './order/component/order-overview/order-overview.component';
 import { CurrentOrdersOverviewComponent } from './order/component/current-orders-overview/current-orders-overview.component';
@@ -36,7 +35,6 @@ import { AllNotificationOfIllnessComponent } from './dashboard-overview/componen
     BadgeComponent,
     AddPersonalComponent,
     AddNewEmployeesComponent,
-    ResetButtonComponent,
     OrderOverviewComponent,
     CreateNewOrderComponent,
     CurrentOrdersOverviewComponent,
