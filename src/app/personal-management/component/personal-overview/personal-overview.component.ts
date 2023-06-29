@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Personals } from 'src/app/Personal-Module/personals';
 import { PersonalModule } from 'src/app/service/personal/personal.module';
 import { CountryCityService } from 'src/app/service/country-city.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
+import { PersonalService } from 'src/app/service/personal.service';
+import { Subject, takeUntil } from 'rxjs';
+import { PersonalInterface } from 'src/app/service/personalInterface';
 
 @Component({
   selector: 'app-personal-overview',
   templateUrl: './personal-overview.component.html',
   styleUrls: ['./personal-overview.component.scss'],
 })
-export class PersonalOverviewComponent implements OnInit {
+export class PersonalOverviewComponent implements OnInit, OnDestroy {
   constructor(
     private personalApiService: PersonalApiService,
     public formBuilder: FormBuilder,
-    public countryCityServices: CountryCityService
+    public countryCityServices: CountryCityService,
+    private personalService: PersonalService
   ) {}
 
-  public personals: any[] = [];
+  public personals: PersonalInterface[] = [];
   public openEditForm: boolean = false;
   public selectedUser = this.formBuilder.group({
     firstName: [
@@ -99,14 +103,27 @@ export class PersonalOverviewComponent implements OnInit {
   public isFormValide: boolean = false;
   public imageUrl: any = '';
 
+  private subject$ = new Subject();
+
   ngOnInit(): void {
-    this.personalApiService.getPersonal().subscribe((list) => {
-      list.map((data: any) => {
-        this.selectedUser.controls.id.setValue(data.id);
-        this.imageUrl = data.img;
-        this.personals.push(data);
-      });
-    });
+    this.personalService.allPersonal();
+    this.personalService.personals$.pipe(takeUntil(this.subject$)).subscribe(allPersonals => {
+      console.log(allPersonals);
+      this.personals = allPersonals
+      
+    })
+    // this.personalApiService.getPersonal().subscribe((list) => {
+    //   list.map((data: any) => {
+    //     this.selectedUser.controls.id.setValue(data.id);
+    //     this.imageUrl = data.img;
+    //     this.personals.push(data);
+    //   });
+    // });
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(true);
+    this.subject$.unsubscribe();
   }
 
   selectImg() {
