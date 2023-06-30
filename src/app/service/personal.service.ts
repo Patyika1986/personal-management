@@ -12,13 +12,13 @@ export class PersonalService implements OnDestroy{
   public personals$: Observable<PersonalInterface[]> = this._personals$.asObservable();
 
 
-  constructor(private personalAiService: PersonalApiService) { }
+  constructor(private personalApiService: PersonalApiService) { }
 
 
   private subject$ = new Subject();
   //get all personals
   public allPersonal(): void {
-   this.personalAiService.getPersonal().pipe(takeUntil(this.subject$)).subscribe((allPersonals:PersonalInterface[]) => {
+   this.personalApiService.getPersonal().pipe(takeUntil(this.subject$)).subscribe((allPersonals:PersonalInterface[]) => {
     this._personals$.next(allPersonals);
    });
   }

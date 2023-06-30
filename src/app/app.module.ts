@@ -20,7 +20,6 @@ import { EmployeeComponent } from './employee-overview/component/employee/employ
 import { EmployeeTimeComponent } from './time-overview/component/employee-time/employee-time.component';
 import { NotificationOfIllnessComponent } from './time-overview/component/notification-of-illness/notification-of-illness.component';
 import { VacationRequestComponent } from './time-overview/component/vacation-request/vacation-request.component';
-import { VacationAndSickOverviewComponent } from './time-overview/component/vacation-and-sick-overview/vacation-and-sick-overview.component';
 import { EmployeeRequestsComponent } from './dashboard-overview/component/employee-requests/employee-requests.component';
 import { AllNotificationOfIllnessComponent } from './dashboard-overview/component/all-notification-of-illness/all-notification-of-illness.component';
 
@@ -43,7 +42,6 @@ import { AllNotificationOfIllnessComponent } from './dashboard-overview/componen
     EmployeeTimeComponent,
     NotificationOfIllnessComponent,
     VacationRequestComponent,
-    VacationAndSickOverviewComponent,
     EmployeeRequestsComponent,
     AllNotificationOfIllnessComponent
   ],
