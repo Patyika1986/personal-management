@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 import { LoginService } from 'src/app/service/login.service';
+import { PersonalService } from 'src/app/service/personal.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
@@ -10,9 +12,9 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent  implements OnDestroy{
   constructor(
-    private personalService: PersonalApiService,
+    private personalService: PersonalService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router
@@ -43,6 +45,7 @@ export class LoginComponent {
   public alertText: string = '';
   public loginWasWrong: boolean = false;
   private allEmployees: any[] = [];
+  private subject$ = new Subject();
 
   /**
    * switch dark and light mode
@@ -61,9 +64,11 @@ export class LoginComponent {
 
   //  wenn man nicht remember me aus wählt dann postet nicht !
   login() {
+    this.personalService.allPersonal();
+    
     console.log(this.form.value);
 
-    this.personalService.getPersonal().subscribe((employeeList) => {
+    this.personalService.personals$.pipe(takeUntil(this.subject$)).subscribe((employeeList) => {
       const logedIn = employeeList.find(
         (data: any) =>
           data.email === this.form.value.email &&
@@ -78,24 +83,11 @@ export class LoginComponent {
         this.loginWasWrong = true;
       }
     });
+  }
 
-    // this.loginService.getLogedEmployees().subscribe((data) => {
-    //   this.personalService.getPersonal().subscribe((list) => {
-    //     for (let i = 0; i < list.length; i++) {
-    //       if (
-    //         list[i].email == this.form.value.email &&
-    //         list[i].id == this.form.value.password
-    //       ) {
-
-    //         this.loginService.postLogin(this.form.value).subscribe();
-    //         this.router.navigate(['employee']);
-
-    //         return;
-    //       }
-    //     }
-    //     this.alertText = `Login failed the email or password is incorrect !`;
-    //     this.loginWasWrong = true;
-    //   });
-    // });
+  ngOnDestroy(): void {
+    this.subject$.next(false);
+    this.subject$.complete(),
+    this.subject$.unsubscribe();
   }
 }

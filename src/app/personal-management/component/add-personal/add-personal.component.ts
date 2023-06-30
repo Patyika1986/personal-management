@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { CountryCityService } from 'src/app/service/country-city.service';
+import { PersonalService } from 'src/app/service/personal.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
@@ -8,11 +10,12 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './add-personal.component.html',
   styleUrls: ['./add-personal.component.scss'],
 })
-export class AddPersonalComponent implements OnInit {
+export class AddPersonalComponent implements OnInit ,OnDestroy{
   constructor(
     public formBuilder: FormBuilder,
-    public personalApiServiace: PersonalApiService,
-    public countryCityServices: CountryCityService
+    public personalServiace: PersonalService,
+    public countryCityServices: CountryCityService,
+    private personalApiService: PersonalApiService
   ) {}
 
   @Input() form = this.formBuilder.group({
@@ -89,6 +92,7 @@ export class AddPersonalComponent implements OnInit {
     id: [''],
   });
 
+  private subject$ = new Subject();
   public genders = ['Male', 'Female', 'Other'];
 
   public countrys: any;
@@ -130,17 +134,18 @@ export class AddPersonalComponent implements OnInit {
   }
 
   saveChanges(form: any) {
-    this.personalApiServiace.getPersonal().subscribe((personalList) => {
+    this.personalServiace.allPersonal();
+    this.personalServiace.personals$.pipe(takeUntil(this.subject$)).subscribe((personalList) => {
       const result = personalList.find(
         (person: any) =>
-          person.id === this.personalApiServiace.selectedEmployeeId()
+          person.id === this.personalApiService.selectedEmployeeId()
       );
 
       if (result) {
-        this.personalApiServiace
+        this.personalApiService
           .postPersonal(
             this.form.value,
-            this.personalApiServiace.selectedEmployeeId()
+            this.personalApiService.selectedEmployeeId()
           )
           .subscribe((list) => {
             this.imageUrl = list.img;
@@ -155,5 +160,11 @@ export class AddPersonalComponent implements OnInit {
 
   resetForm() {
     this.form.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(false);
+    this.subject$.complete();
+    this.subject$.unsubscribe();
   }
 }

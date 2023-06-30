@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { OrderApiService } from 'src/app/service/orderApi.service';
+import { PersonalService } from 'src/app/service/personal.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
@@ -8,10 +10,10 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './create-new-order.component.html',
   styleUrls: ['./create-new-order.component.scss']
 })
-export class CreateNewOrderComponent implements OnInit{
+export class CreateNewOrderComponent implements OnInit, OnDestroy{
 
   constructor(private formBuilder:FormBuilder,
-    private personalService: PersonalApiService,
+    private personalService: PersonalService,
     private orderApiService: OrderApiService){}
 
   public form = this.formBuilder.group({
@@ -44,11 +46,13 @@ export class CreateNewOrderComponent implements OnInit{
 
   public orderTimeFrom = [""];
   public orderTimeTo = [""];
+  private subject$ = new Subject();
 
   
 
   ngOnInit(): void {
-    this.personalService.getPersonal().subscribe(list => {
+    this.personalService.allPersonal();
+    this.personalService.personals$.pipe(takeUntil(this.subject$)).subscribe(list => {
       list.map((data:any) => {
         this.employeesList.push(data);
       });
@@ -67,6 +71,8 @@ export class CreateNewOrderComponent implements OnInit{
   }
 
   selectEmployee(employee:any){
+    console.log(employee.target.value);
+    
     this.form.controls.selectEmployee.setValue(employee.target.value);
   }
 
@@ -90,6 +96,12 @@ export class CreateNewOrderComponent implements OnInit{
       this.orderWrong = true;
       console.log(this.form.status);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(false);
+    this.subject$.complete();
+    this.subject$.unsubscribe();
   }
 
 
