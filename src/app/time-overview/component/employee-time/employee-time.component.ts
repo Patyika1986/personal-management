@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { OrderApiService } from 'src/app/service/orderApi.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
@@ -8,7 +9,7 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './employee-time.component.html',
   styleUrls: ['./employee-time.component.scss'],
 })
-export class EmployeeTimeComponent implements OnInit {
+export class EmployeeTimeComponent implements OnInit, OnDestroy {
   constructor(
     private orderApiService: OrderApiService,
     private personalApiService: PersonalApiService
@@ -18,13 +19,14 @@ export class EmployeeTimeComponent implements OnInit {
   public orderTimeFrom: string = '';
   public orderTimeTo: string = '';
   public workedTime: number = 0;
+  private subject$ = new Subject();
   ngOnInit(): void {
     const logedEmployee = localStorage.getItem('employeeIsLogd')!;
     const jsonLogedEmployee = JSON.parse(logedEmployee);
 
     if (isNaN(jsonLogedEmployee)) {
-      this.personalApiService.getPersonal().subscribe((personalList) => {
-        this.orderApiService.getOrdersList().subscribe((orderedList) => {
+      this.personalApiService.getPersonal().pipe(takeUntil(this.subject$)).subscribe((personalList) => {
+        this.orderApiService.getOrdersList().pipe(takeUntil(this.subject$)).subscribe((orderedList) => {
           for (const personals of personalList) {
             const result = orderedList.find(
               (ordered: any) =>
@@ -59,5 +61,10 @@ export class EmployeeTimeComponent implements OnInit {
 
       this.workedTime =   totalTo - totalFrom;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(true);
+    this.subject$.complete();
   }
 }

@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { EmployeeService } from './employee.service';
 import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
-import { TimeInterface } from '../time-overview/timeInterface';
 import { VacationsInterface } from '../time-overview/vacationsInterface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TimeService {
+export class TimeService implements OnDestroy{
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -20,5 +19,10 @@ export class TimeService {
     this.employeeService.getVacationRequest().pipe(takeUntil(this.subject$)).subscribe((list) => {
       this._personalsVacations$.next(list);
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(true);
+    this.subject$.complete();
   }
 }

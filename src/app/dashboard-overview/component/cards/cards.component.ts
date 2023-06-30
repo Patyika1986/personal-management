@@ -28,14 +28,14 @@ export class CardsComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.personalService.allPersonal();
 
-    this.employeeService.getVacationRequest().subscribe(req => this.requestsLength = req.length);
-    this.employeeService.getNotificationOfIllness().subscribe(list => this.sickNotificationLength = list.length);
+    this.employeeService.getVacationRequest().pipe(takeUntil(this.subject$)).subscribe(req => this.requestsLength = req.length);
+    this.employeeService.getNotificationOfIllness().pipe(takeUntil(this.subject$)).subscribe(list => this.sickNotificationLength = list.length);
     
     this.personalService.personals$.pipe(takeUntil(this.subject$)).subscribe(list => {
       this.currentPersonalLength = list.length;      
     });
 
-    this.orderApiService.getOrdersList().subscribe(list => {
+    this.orderApiService.getOrdersList().pipe(takeUntil(this.subject$)).subscribe(list => {
       this.currentOrderLength = list.length;
     })
   }
@@ -46,9 +46,8 @@ export class CardsComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.subject$.next(false);
+    this.subject$.next(true);
     this.subject$.complete();
-    this.subject$.unsubscribe();
   }
 
 }

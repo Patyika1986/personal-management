@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Personals } from 'src/app/Personal-Module/personals';
-import { PersonalModule } from 'src/app/service/personal/personal.module';
 import { CountryCityService } from 'src/app/service/country-city.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 import { PersonalService } from 'src/app/service/personal.service';
@@ -112,30 +110,13 @@ export class PersonalOverviewComponent implements OnInit, OnDestroy {
       this.personals = allPersonals
       
     })
-    // this.personalApiService.getPersonal().subscribe((list) => {
-    //   list.map((data: any) => {
-    //     this.selectedUser.controls.id.setValue(data.id);
-    //     this.imageUrl = data.img;
-    //     this.personals.push(data);
-    //   });
-    // });
+
   }
 
-  ngOnDestroy(): void {
-    this.subject$.next(true);
-    this.subject$.unsubscribe();
-  }
+
 
   selectImg() {
-    // if(file.target.files){
-    //   let fileReader = new FileReader();
-    //   fileReader.readAsDataURL(file.target.files[0]);
-    //   fileReader.onload = (event:any) => {
-    //     this.imageUrl = event.target.result;
-    //     this.form.value.img = this.imageUrl;
-    //     this.selectImg.emit(file);
-    //   }
-    // }
+
   }
   selectGender(gender: any) {
     this.selectedGender = gender.value;
@@ -154,7 +135,7 @@ export class PersonalOverviewComponent implements OnInit, OnDestroy {
    */
   editPersonal(id: string) {
     this.openEditForm = true;
-    this.personalApiService.getPersonal().subscribe((data) => {
+    this.personalApiService.getPersonal().pipe(takeUntil(this.subject$)).subscribe((data) => {
       const selectedUser = data.find((user: any) => user.id === id);
 
       if (selectedUser) {
@@ -195,10 +176,15 @@ export class PersonalOverviewComponent implements OnInit, OnDestroy {
     const result = this.personals.find(person => person.id === id);
     if(result){
       this.openEditForm = false;
-      this.personalApiService.deletePersonal(id).subscribe();
+      this.personalApiService.deletePersonal(id).pipe(takeUntil(this.subject$)).subscribe();
       this.personals.find(personal => personal.id === id)
       const index = this.personals.indexOf(result);
       this.personals.splice(index,1);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(true);
+    this.subject$.complete();
   }
 }

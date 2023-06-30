@@ -24,8 +24,8 @@ export class PersonalService implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    // this.subject$.next(false);
-    // this.subject$.unsubscribe();
+    this.subject$.next(true);
+    this.subject$.unsubscribe();
   }
 
 

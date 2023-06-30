@@ -87,7 +87,7 @@ export class CreateNewOrderComponent implements OnInit, OnDestroy{
    */
   saveOrder(){
     if(this.form.status === "VALID"){
-      this.orderApiService.postOrder(this.form.value).subscribe();
+      this.orderApiService.postOrder(this.form.value).pipe(takeUntil(this.subject$)).subscribe();
       this.modalText = `Order has been saved and assigned to employee: ${this.form.value.selectEmployee}`;
       this.isSuccess = true;
       console.log(this.form.status);
@@ -99,9 +99,8 @@ export class CreateNewOrderComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.subject$.next(false);
+    this.subject$.next(true);
     this.subject$.complete();
-    this.subject$.unsubscribe();
   }
 
 

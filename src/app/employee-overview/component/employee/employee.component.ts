@@ -22,7 +22,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.personalService.allPersonal();
-    this.orderApiService.getOrdersList().subscribe((employeeOrderList) => {
+    this.orderApiService.getOrdersList().pipe(takeUntil(this.subject$)).subscribe((employeeOrderList) => {
       employeeOrderList.map((data: any) => {        
         this.orderedList.push(data);
 
@@ -57,7 +57,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     this.orderedList.map((data) => {
       data.status = $event.target.value;
       console.log(data);
-      this.orderApiService.updateOrder(data.id, data).subscribe((list) => {
+      this.orderApiService.updateOrder(data.id, data).pipe(takeUntil(this.subject$)).subscribe((list) => {
         list.status = $event.target.value;
       });
     });
@@ -66,7 +66,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   selectOrderTimeFrom($event: any) {
     this.orderedList.map((data) => {
       data.orderTimeFrom = $event.target.value;
-      this.orderApiService.updateOrder(data.id, data).subscribe((list) => {
+      this.orderApiService.updateOrder(data.id, data).pipe(takeUntil(this.subject$)).subscribe((list) => {
         list.orderTimeFrom = $event.target.value;
       });
     });
@@ -75,15 +75,14 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   selectOrderTimeTo($event: any) {
     this.orderedList.map((data) => {
       data.orderTimeTo = $event.target.value;
-      this.orderApiService.updateOrder(data.id, data).subscribe((list) => {
+      this.orderApiService.updateOrder(data.id, data).pipe(takeUntil(this.subject$)).subscribe((list) => {
         list.orderTimeTo = $event.target.value;
       });
     });
   }
 
   ngOnDestroy(): void {
-    this.subject$.next(false);
+    this.subject$.next(true);
     this.subject$.complete();
-    this.subject$.unsubscribe();
   }
 }

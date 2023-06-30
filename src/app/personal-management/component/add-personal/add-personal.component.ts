@@ -10,7 +10,7 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './add-personal.component.html',
   styleUrls: ['./add-personal.component.scss'],
 })
-export class AddPersonalComponent implements OnInit ,OnDestroy{
+export class AddPersonalComponent implements OnInit, OnDestroy{
   constructor(
     public formBuilder: FormBuilder,
     public personalServiace: PersonalService,
@@ -146,7 +146,7 @@ export class AddPersonalComponent implements OnInit ,OnDestroy{
           .postPersonal(
             this.form.value,
             this.personalApiService.selectedEmployeeId()
-          )
+          ).pipe(takeUntil(this.subject$))
           .subscribe((list) => {
             this.imageUrl = list.img;
           });
@@ -163,8 +163,7 @@ export class AddPersonalComponent implements OnInit ,OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.subject$.next(false);
+    this.subject$.next(true);
     this.subject$.complete();
-    this.subject$.unsubscribe();
   }
 }

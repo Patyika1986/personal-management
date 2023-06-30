@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { CountryCityService } from 'src/app/service/country-city.service';
 import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
@@ -8,7 +9,7 @@ import { PersonalApiService } from 'src/app/service/personal/personalApi.service
   templateUrl: './add-new-employees.component.html',
   styleUrls: ['./add-new-employees.component.scss']
 })
-export class AddNewEmployeesComponent implements OnInit{
+export class AddNewEmployeesComponent implements OnInit, OnDestroy{
   constructor(private formBuilder: FormBuilder,
     private personalApiService: PersonalApiService,
     private countryCityServices: CountryCityService){}
@@ -46,6 +47,7 @@ export class AddNewEmployeesComponent implements OnInit{
   public modalText: string = '';
   public isAddSuccessfoly: boolean = true;
   public addIsWrong: boolean = false;
+  private subject$ = new Subject();
 
   ngOnInit(): void {
     this.countrys = this.countryCityServices.getCountry();  
@@ -75,7 +77,7 @@ export class AddNewEmployeesComponent implements OnInit{
     this.form.value.country = this.selectedCountry;
 
     if(this.form.status === "VALID"){
-      this.personalApiService.addPersonal(this.form.value).subscribe(() => {
+      this.personalApiService.addPersonal(this.form.value).pipe(takeUntil(this.subject$)).subscribe(() => {
         this.modalText = 'Add new employee was successfuly';
       });      
     }else{
@@ -92,5 +94,10 @@ export class AddNewEmployeesComponent implements OnInit{
   resetForm(){
     console.log('reset is runing');
     this.form.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.subject$.next(true);
+    this.subject$.complete();
   }
 }

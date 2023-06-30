@@ -5,7 +5,6 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { LoginService } from 'src/app/service/login.service';
 import { PersonalService } from 'src/app/service/personal.service';
-import { PersonalApiService } from 'src/app/service/personal/personalApi.service';
 
 @Component({
   selector: 'app-login',
@@ -75,7 +74,7 @@ export class LoginComponent  implements OnDestroy{
           data.id === this.form.value.password
       );
       if (logedIn) {
-        this.loginService.postLogin(this.form.value).subscribe();
+        this.loginService.postLogin(this.form.value).pipe(takeUntil(this.subject$)).subscribe();
         localStorage.setItem('employeeIsLogd', JSON.stringify(this.form.value));
         this.router.navigate(['employee']);
       } else {
@@ -86,8 +85,7 @@ export class LoginComponent  implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.subject$.next(false);
-    this.subject$.complete(),
-    this.subject$.unsubscribe();
+    this.subject$.next(true);
+    this.subject$.complete();
   }
 }
