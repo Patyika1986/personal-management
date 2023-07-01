@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <div
-        class="card"
+        class="card bg-dark text-light"
         routerLink="/personal-overview"
         routerLinkActive="active"
       >
@@ -18,7 +18,9 @@
                 <app-badge [badge]="currentPersonalLength"></app-badge>
               </div>
               <!-- <p>Total number of staff.</p> -->
-              <small>Here you can edit or delete employees here</small>
+              <small class="text-light"
+                >Here you can edit or delete employees here</small
+              >
             </a>
           </div>
         </div>
@@ -26,7 +28,7 @@
     </div>
     <div class="col">
       <div
-        class="card pb-1"
+        class="card text-light bg-dark pb-4"
         routerLink="/order-overview"
         routerLinkActive="active"
       >
@@ -41,15 +43,19 @@
                 <!--badge-->
                 <p></p>
               </div>
-              <p class="">Create an order and then assign employees</p>
-              <!-- <small>And some small print.</small> -->
+              <!-- <p class="">Create an order and then assign employees</p> -->
+              <small class="text-light">And some small print.</small>
             </a>
           </div>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card" routerLink="/add-new-employe" routerLinkActive="active">
+      <div
+        class="card text-light bg-dark"
+        routerLink="/add-new-employe"
+        routerLinkActive="active"
+      >
         <div class="card-body">
           <h5>Add new Employes</h5>
           <div class="list-group mt-5 pb-5">
@@ -62,7 +68,7 @@
                 <!-- <app-badge [badge]="employeeLength"></app-badge> -->
               </div>
               <!-- <p class="">Some placeholder content in a paragraph.</p> -->
-              <small>Create a new employee here.</small>
+              <small class="text-light">Create a new employee here.</small>
             </a>
           </div>
         </div>
@@ -72,7 +78,11 @@
 
   <div class="row mt-1">
     <div class="col">
-      <div class="card" routerLink="/employee-time" routerLinkActive="active">
+      <div
+        class="card bg-dark text-light"
+        routerLink="/employee-time"
+        routerLinkActive="active"
+      >
         <div class="card-body">
           <h5>Employee time overview</h5>
           <div class="list-group mt-5">
@@ -84,8 +94,8 @@
                 <!--badge-->
                 <app-badge [badge]="0"></app-badge>
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <!-- <p class="">Some placeholder content in a paragraph.</p> -->
+              <small class="text-light">And some small print.</small>
             </a>
           </div>
         </div>
@@ -93,7 +103,7 @@
     </div>
     <div class="col">
       <div
-        class="card"
+        class="card text-light bg-dark"
         routerLink="/employee-requests-overview"
         routerLinkActive="active"
       >
@@ -108,8 +118,8 @@
                 <!--badge-->
                 <app-badge [badge]="requestsLength"></app-badge>
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <!-- <p class="">Some placeholder content in a paragraph.</p> -->
+              <small class="text-light">And some small print.</small>
             </a>
           </div>
         </div>
@@ -119,7 +129,7 @@
   <div class="row mt-1">
     <div class="col">
       <div
-        class="card"
+        class="card bg-dark text-light"
         routerLink="/current-orders-overview"
         routerLinkActive="active"
       >
@@ -133,8 +143,8 @@
               <div class="d-flex w-100 justify-content-between">
                 <app-badge [badge]="currentOrderLength"></app-badge>
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <!-- <p class="">Some placeholder content in a paragraph.</p> -->
+              <small class="text-light">And some small print.</small>
             </a>
           </div>
         </div>
@@ -142,7 +152,7 @@
     </div>
     <div class="col">
       <div
-        class="card"
+        class="card text-light bg-dark"
         routerLink="/all-notification-of-illness"
         routerLinkActive="active"
       >
@@ -157,8 +167,8 @@
                 <!--badge-->
                 <app-badge [badge]="sickNotificationLength"></app-badge>
               </div>
-              <p class="">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
+              <!-- <p class="">Some placeholder content in a paragraph.</p> -->
+              <small class="text-light">And some small print.</small>
             </a>
           </div>
         </div>

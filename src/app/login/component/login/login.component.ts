@@ -73,6 +73,8 @@ export class LoginComponent  implements OnDestroy{
           data.email === this.form.value.email &&
           data.id === this.form.value.password
       );
+      console.log(logedIn,'gelogt');
+      
       if (logedIn) {
         this.loginService.postLogin(this.form.value).pipe(takeUntil(this.subject$)).subscribe();
         localStorage.setItem('employeeIsLogd', JSON.stringify(this.form.value));

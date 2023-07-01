@@ -58,4 +58,8 @@ export class SideNavbarComponent {
       this.darkMode ? 'dark' : 'light'
     );
   }
+
+  logout(){
+    localStorage.removeItem('employeeIsLogd');
+  }
 }

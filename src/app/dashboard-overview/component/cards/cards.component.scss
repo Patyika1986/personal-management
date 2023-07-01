@@ -14,9 +14,9 @@
 
       @media(max-width:902px){flex-wrap: wrap; }
       @media(max-width: 685px){
-        margin-left: .5rem;
+        margin-left: 3.5rem;
       }
-      @media(max-width:472px){width: 90%; margin-left: 2.2rem;}
+      @media(max-width:472px){width: 90%; margin-left: 3.2rem;}
       .col {
         padding: .5rem;
         @media(max-width: 1200px){
@@ -26,8 +26,9 @@
 
           
           .card {
+            box-shadow: 0px 0px .1rem lavender;
             cursor: pointer;
-            background-color: var(--links-color);
+            _background-color: var(--links-color);
 
             border: none;
           .card-body {

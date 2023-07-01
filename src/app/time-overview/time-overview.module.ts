@@ -4,11 +4,11 @@ import { EmployeeTimeComponent } from './component/employee-time/employee-time.c
 import { Routes } from '@angular/router';
 import { VacationRequestComponent } from './component/vacation-request/vacation-request.component';
 import { NotificationOfIllnessComponent } from './component/notification-of-illness/notification-of-illness.component';
-import { VacationAndSickOverviewComponent } from './component/vacation-and-sick-overview/vacation-and-sick-overview.component';
+// import { VacationAndSickOverviewComponent } from './component/vacation-and-sick-overview/vacation-and-sick-overview.component';
 
 const routes: Routes = [
   { path: '', component: EmployeeTimeComponent },
-  { path: '', component: VacationRequestComponent },
+  // { path: '', component: VacationRequestComponent },
   { path: '', component: NotificationOfIllnessComponent },
 ]
 

@@ -32,6 +32,25 @@ export class CurrentOrdersOverviewComponent implements OnInit, OnDestroy {
     }
   }
 
+  deletePersonal(order: any) {
+    this.orderApiService
+      .getOrdersList()
+      .pipe(takeUntil(this.subject$))
+      .subscribe((orderList) => {
+        if (order.status === 'Completed') {
+          const result = this.orderList.find(
+            (ordered) => ordered.id === order.id
+          );
+          const index = this.orderList.indexOf(result);
+          this.orderApiService
+            .deleteOrder(result.id)
+            .pipe(takeUntil(this.subject$))
+            .subscribe();
+          this.orderList.splice(index, 1);
+        }
+      });
+  }
+
   ngOnDestroy(): void {
     this.subject$.next(true);
     this.subject$.complete();

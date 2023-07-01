@@ -26,12 +26,12 @@ export class CreateNewOrderComponent implements OnInit, OnDestroy{
     zipCode:['',Validators.compose([Validators.minLength(4),Validators.maxLength(6),Validators.required])],
     city:['',Validators.compose([Validators.minLength(3),Validators.maxLength(35),Validators.required])],
     email:['',Validators.compose([Validators.minLength(3),Validators.maxLength(35),Validators.email,Validators.required])],
-    phone:['',Validators.compose([Validators.minLength(6),Validators.maxLength(14),Validators.required])],
+    phone:['',Validators.compose([Validators.minLength(6),Validators.maxLength(24),Validators.required])],
     selectEmployee:['',Validators.required],
     message:['',Validators.maxLength(1000)],
-    status:[''],
-    orderTimeFrom:[''],
-    orderTimeTo:['']
+    status:['',Validators.required],
+    orderTimeFrom:['',Validators.required],
+    orderTimeTo:['',Validators.required]
   });
 
   public employeesList:any[] = [];
@@ -53,8 +53,13 @@ export class CreateNewOrderComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.personalService.allPersonal();
     this.personalService.personals$.pipe(takeUntil(this.subject$)).subscribe(list => {
+      this.employeesList = [];
+      console.log(list);
+      
       list.map((data:any) => {
         this.employeesList.push(data);
+        console.log(this.employeesList);
+        
       });
     });
   }
@@ -96,6 +101,10 @@ export class CreateNewOrderComponent implements OnInit, OnDestroy{
       this.orderWrong = true;
       console.log(this.form.status);
     }
+  }
+
+  reset(){
+    this.form.reset();
   }
 
   ngOnDestroy(): void {

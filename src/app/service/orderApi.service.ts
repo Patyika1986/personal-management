@@ -41,4 +41,8 @@ export class OrderApiService {
 
     return data;
   }
+
+  deleteOrder(id:any):Observable<any>{
+    return this.http.delete<any>(`https://personal-management-1293e-default-rtdb.firebaseio.com/orderList/${id}.json`);
+  }
 }

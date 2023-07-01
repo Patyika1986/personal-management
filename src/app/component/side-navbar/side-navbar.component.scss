@@ -4,7 +4,7 @@
     position: fixed;
     left: 0;
     height: 100vh;
-    padding: 1.5rem;
+    padding: 1rem;
     z-index: 10;
 
     @media(max-width: 685px){
@@ -13,7 +13,7 @@
   
     .links {
       height: clamp(20px, 50px, 20px);
-      padding: 1.5rem;
+      padding: 1rem;
           @media(max-width: 768px){
             padding: 1rem;
     }
@@ -23,7 +23,7 @@
     .links-end{
       height: clamp(20px, 50px, 10px);
 
-      padding: 1.5rem;
+      padding: 1rem;
           @media(max-width: 768px){
             padding: 1rem;
 
@@ -38,11 +38,12 @@
       _padding: 0.3rem 1rem;
       margin: 1rem 0;
       border-radius: 0.3rem;
-      background-color: var(--links-color);
+      background-color: rgb(37, 37, 37);
+      color: white;
       cursor: pointer;
   
       .material-symbols-outlined {
-        font-size: 25px;
+        font-size: 20px;
         @media(max-width: 685px){
           font-size: 16px;
         }

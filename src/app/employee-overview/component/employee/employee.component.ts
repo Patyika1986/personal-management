@@ -81,6 +81,11 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     });
   }
 
+  deletePersonal(order:any){
+    console.log(order);
+    
+  }
+
   ngOnDestroy(): void {
     this.subject$.next(true);
     this.subject$.complete();

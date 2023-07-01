@@ -21,6 +21,11 @@
         padding-top: 2rem;
         // border: 2px solid red;
 
+        .delete {
+            color: red;
+            cursor: pointer;
+        }
+
         .material-symbols-outlined{
             font-weight: 600;
             font-size: 2rem;
