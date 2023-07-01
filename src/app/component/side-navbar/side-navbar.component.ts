@@ -61,5 +61,6 @@ export class SideNavbarComponent {
 
   logout(){
     localStorage.removeItem('employeeIsLogd');
+    this.router.navigate(['https://p-lakatos-portfolio.vercel.app/overview']);
   }
 }
