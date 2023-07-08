@@ -8,8 +8,11 @@ import { Observable, map } from 'rxjs';
 export class OrderApiService {
 
   constructor(private http:HttpClient) { }
+  
 
-  private orderUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/orderList.json';
+
+
+  private orderUrl: string = 'https://personal-and-order-default-rtdb.firebaseio.com/orderList.json';
 
   postOrder(order:any):Observable<any[]>{
     const data = this.http.post<any[]>(this.orderUrl,order);
@@ -32,7 +35,8 @@ export class OrderApiService {
 
   updateOrder(id: any, item: any): Observable<any> {
     const data = this.http.patch(
-      'https://personal-management-1293e-default-rtdb.firebaseio.com/orderList/' +
+      
+      'https://personal-and-order-default-rtdb.firebaseio.com/orderList/' +
         id +
         '.json',
       item
@@ -43,6 +47,6 @@ export class OrderApiService {
   }
 
   deleteOrder(id:any):Observable<any>{
-    return this.http.delete<any>(`https://personal-management-1293e-default-rtdb.firebaseio.com/orderList/${id}.json`);
+    return this.http.delete<any>(`https://personal-and-order-default-rtdb.firebaseio.com/orderList/${id}.json`);
   }
 }

@@ -12,9 +12,9 @@ export class PersonalApiService {
   selectedEmployeeId = signal('');
 
   private personalUrl: string =
-    'https://personal-management-1293e-default-rtdb.firebaseio.com/personal.json';
+    'https://personal-and-order-default-rtdb.firebaseio.com/personal.json';
   private postUrl: string =
-    'https://personal-management-1293e-default-rtdb.firebaseio.com/personal/';
+    'https://personal-and-order-default-rtdb.firebaseio.com/personal/';
 
   addPersonal(personal: any): Observable<any[]> {
     const headers = new HttpHeaders({
@@ -40,11 +40,11 @@ export class PersonalApiService {
   postPersonal(personal: any, id: any): Observable<any> {
     console.log(id);
     
-    const data = this.http.put('https://personal-management-1293e-default-rtdb.firebaseio.com/personal/' +id+ '.json',personal);
+    const data = this.http.put('https://personal-and-order-default-rtdb.firebaseio.com/personal/' +id+ '.json',personal);
     return data;
   }
 
   deletePersonal(id:any):Observable<any>{
-    return this.http.delete<any>(`https://personal-management-1293e-default-rtdb.firebaseio.com/personal/${id}.json`);
+    return this.http.delete<any>(`https://personal-and-order-default-rtdb.firebaseio.com/personal/${id}.json`);
   }
 }

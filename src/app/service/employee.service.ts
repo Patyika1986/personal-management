@@ -10,12 +10,12 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   vacationRequest(vacReq:any):Observable<any[]>{
-    const data = this.http.post<any[]>('https://personal-management-1293e-default-rtdb.firebaseio.com/vacation.json',vacReq);
+    const data = this.http.post<any[]>('https://personal-and-order-default-rtdb.firebaseio.com/vacation.json',vacReq);
     return data;
   }
 
   getVacationRequest(): Observable<any> {
-    return this.http.get('https://personal-management-1293e-default-rtdb.firebaseio.com/vacation.json').pipe(
+    return this.http.get('https://personal-and-order-default-rtdb.firebaseio.com/vacation.json').pipe(
       map((res: any) => {
         const vacReq = [];
         for (const key in res) {
@@ -30,7 +30,7 @@ export class EmployeeService {
 
   updateVacationRequest(id: any, item: any): Observable<any> {
     const data = this.http.patch(
-      'https://personal-management-1293e-default-rtdb.firebaseio.com/vacation/' +
+      'https://personal-and-order-default-rtdb.firebaseio.com/vacation/' +
         id +
         '.json',
       item
@@ -41,12 +41,12 @@ export class EmployeeService {
 
   // post notification of illness
   postNotificationOfIllness(employee:any):Observable<any>{
-    const data = this.http.post<any[]>('https://personal-management-1293e-default-rtdb.firebaseio.com/sick.json',employee);
+    const data = this.http.post<any[]>('https://personal-and-order-default-rtdb.firebaseio.com/sick.json',employee);
     return data;
   }
 
   getNotificationOfIllness(): Observable<any> {
-    return this.http.get('https://personal-management-1293e-default-rtdb.firebaseio.com/sick.json').pipe(
+    return this.http.get('https://personal-and-order-default-rtdb.firebaseio.com/sick.json').pipe(
       map((res: any) => {
         const sicks = [];
         for (const key in res) {

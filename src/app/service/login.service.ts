@@ -9,7 +9,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  private loginUrl: string = 'https://personal-management-1293e-default-rtdb.firebaseio.com/login.json'
+  private loginUrl: string = 'https://personal-and-order-default-rtdb.firebaseio.com/login.json'
   postLogin(employee:any):Observable<any>{
     const data = this.http.post(this.loginUrl,employee);
     return data;
@@ -32,7 +32,7 @@ export class LoginService {
   updateEmployeeLogin(personal: any, id: any): Observable<any> {
     console.log(id);
     
-    const data = this.http.put('https://personal-management-1293e-default-rtdb.firebaseio.com/login/' +id+ '.json',personal);
+    const data = this.http.put('https://personal-and-order-default-rtdb.firebaseio.com/login/' +id+ '.json',personal);
     return data;
   }
 }
